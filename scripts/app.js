@@ -4,6 +4,7 @@ window.onload = function() {
 
     var divicon = document.getElementById('themeBtn');
     var icon = document.getElementsByClassName('iconeThemeBtn')[0];
+    var logo = document.getElementById('logo');
 
 
     divicon.onclick = function() {
@@ -19,6 +20,8 @@ window.onload = function() {
             root.style.setProperty('--font-paragraph', "#2a2a2a");
             root.style.setProperty('--button-color', '#ff8e3c');
             root.style.colorScheme = 'light';
+            logo.style.filter = 'invert(0)';
+            logo.style.transition = ".5s";
 
             // Changement de la valeur des variables JS (mode clair)
             moonOrSun = "fa-sun";
@@ -32,6 +35,9 @@ window.onload = function() {
             root.style.setProperty('--font-paragraph', "#a7a9be");
             root.style.setProperty('--button-color', '#ff8906');
             root.style.colorScheme = 'dark';
+            logo.style.filter = 'invert(1)';
+            logo.style.transition = ".5s";
+
 
             // Changement de la valeur des variables JS (mode sombre)
             moonOrSun = "fa-moon";
