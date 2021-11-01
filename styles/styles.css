@@ -7,6 +7,7 @@
     --font-paragraph: #2a2a2a;
     --button-color: #ff8e3c;
     --font-text-button: var(--font-title);
+    color-scheme: dark;
 }
 
 body {
@@ -21,12 +22,15 @@ body {
 }
 
 section {
-    font-size: 120%;
     width: 50%;
     margin: 25px auto;
-    text-align: justify;
-    font-family: Roboto, sans-serif;
+}
+
+.article {
+    font-size: 120%;
+    font-family: 'Roboto', sans-serif;
     line-height: 2em;
+    text-align: justify;
 }
 
 .titre {
