@@ -29,6 +29,7 @@ section {
 header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .navbar {
@@ -36,14 +37,19 @@ header {
     height: 65px;
 }
 
-img {
+#logo {
     width: 59px;
     margin: 0px 0px 0px 250px;
 }
 
+.themeBtn {
+    width: 25px;
+    margin-right: 25px;
+}
+
 .navig ul {
     list-style-type: none;
-    margin: 0 0 0 350px;
+    margin: 0 0 0 220px;
     padding: 0;
 }
 
@@ -55,19 +61,12 @@ img {
     border-radius: 8px;
 }
 
-li:hover {
+.navig li:hover {
     background-color: #ddd;
     transition: .3s;
 }
 
-li>a {
+.navig li>a {
     text-decoration: none;
     color: black;
-}
-
-.element {
-    margin: 0px 15px 0px 15px;
-    padding: 5px 15px 5px 15px;
-    font-size: 130%;
-    border-radius: 8px;
 }
