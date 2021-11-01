@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-html {
-    font-family: Roboto, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+:root {
+    --bg-color: #eff0f3;
+    --navbar-bg: #e1e2e6;
+    --font-title: #0d0d0d;
+    --font-paragraph: #2a2a2a;
+    --button-color: #ff8e3c;
+    --font-text-button: var(--font-title);
 }
 
 body {
@@ -9,17 +15,25 @@ body {
 
 .principal {
     padding: 25px;
-    background-color: rgb(247, 247, 247);
+    background-color: var(--bg-color);
+    color: var(--font-paragraph);
+    transition: .5s;
 }
 
 section {
-    margin-top: 30px;
-    margin-bottom: 30px;
     font-size: 120%;
-    font-family: 'Roboto', sans-serif;
-    width: 70%;
-    margin: 0 auto;
+    width: 50%;
+    margin: 25px auto;
     text-align: justify;
+    font-family: Roboto, sans-serif;
+    line-height: 2em;
+}
+
+.titre {
+    color: var(--font-title);
+    font-size: 35px;
+    font-family: 'Space Mono', monospace, Roboto, sans-serif;
+    transition: .5s;
 }
 
 .saut {
@@ -35,6 +49,9 @@ header {
 .navbar {
     width: 100%;
     height: 65px;
+    background-color: var(--navbar-bg);
+    transition: .5s;
+    font-family: Roboto, sans-serif;
 }
 
 #logo {
@@ -42,9 +59,19 @@ header {
     margin: 0px 0px 0px 250px;
 }
 
-.themeBtn {
-    width: 25px;
+.iconeThemeBtn {
+    font-size: 25px;
+    color: var(--font-paragraph);
+}
+
+#themeBtn {
     margin-right: 25px;
+    cursor: pointer;
+}
+
+.iconeThemeBtn:hover {
+    color: var(--button-color);
+    transition: .3s;
 }
 
 .navig ul {
@@ -62,11 +89,12 @@ header {
 }
 
 .navig li:hover {
-    background-color: #ddd;
+    background-color: var(--bg-color);
     transition: .3s;
 }
 
 .navig li>a {
     text-decoration: none;
-    color: black;
+    color: var(--font-title);
+    transition: .5s;
 }

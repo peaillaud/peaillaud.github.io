@@ -1,1 +1,42 @@
-console.log("commit");
+window.onload = function() {
+
+    var root = document.documentElement;
+
+    var divicon = document.getElementById('themeBtn');
+    var icon = document.getElementsByClassName('iconeThemeBtn')[0];
+
+
+    divicon.onclick = function() {
+        let moonOrSun;
+        let inverse;
+        if (icon.classList.contains('fa-moon')) {
+
+            // Changement de la valeur des variables CSS (mode clair)
+
+            root.style.setProperty('--bg-color', '#eff0f3');
+            root.style.setProperty('--navbar-bg', "#e1e2e6");
+            root.style.setProperty('--font-title', '#0d0d0d');
+            root.style.setProperty('--font-paragraph', "#2a2a2a");
+            root.style.setProperty('--button-color', '#ff8e3c');
+
+            // Changement de la valeur des variables JS (mode clair)
+            moonOrSun = "fa-sun";
+            inverse = "fa-moon";
+        } else if (icon.classList.contains('fa-sun')) {
+
+            // Changement de la valeur des variables CSS (mode sombre)
+            root.style.setProperty('--bg-color', '#0f0e17');
+            root.style.setProperty('--navbar-bg', "#0f0e17f5");
+            root.style.setProperty('--font-title', '#fffffe');
+            root.style.setProperty('--font-paragraph', "#a7a9be");
+            root.style.setProperty('--button-color', '#ff8906');
+
+            // Changement de la valeur des variables JS (mode sombre)
+            moonOrSun = "fa-moon";
+            inverse = "fa-sun";
+        }
+
+        icon.classList.remove(inverse);
+        icon.classList.add(moonOrSun);
+    }
+}
