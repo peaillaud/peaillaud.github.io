@@ -26,6 +26,12 @@ section {
     margin: 25px auto;
 }
 
+.article::selection,
+.titre::selection {
+    color: var(--bg-color);
+    background-color: var(--font-paragraph);
+}
+
 .article {
     font-size: 120%;
     font-family: 'Roboto', sans-serif;
