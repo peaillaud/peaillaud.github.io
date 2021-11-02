@@ -1,3 +1,7 @@
+:root {
+	--status: none;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -90,4 +94,8 @@ body {
 	background-color: white;
 	position: relative;
 	border-radius: 6px;
+}
+
+.def {
+	display: var(--status);
 }
