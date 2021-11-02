@@ -4,13 +4,16 @@ var divicon = document.getElementById('themeBtn');
 var icon = document.getElementsByClassName('iconeThemeBtn')[0];
 var logo = document.getElementById('logo');
 
+/**
+ * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
+ */
 
 divicon.onclick = function() {
     let moonOrSun;
     let inverse;
     if (icon.classList.contains('fa-moon')) {
 
-        // Changement de la valeur des variables CSS (mode clair)
+        // Changement de la valeur des variables et du style CSS (mode clair)
 
         root.style.setProperty('--bg-color', '#eff0f3');
         root.style.setProperty('--navbar-bg', "#e1e2e6");
@@ -26,7 +29,7 @@ divicon.onclick = function() {
         inverse = "fa-moon";
     } else if (icon.classList.contains('fa-sun')) {
 
-        // Changement de la valeur des variables CSS (mode sombre)
+        // Changement de la valeur des variables et du style CSS (mode sombre)
         root.style.setProperty('--bg-color', '#0f0e17');
         root.style.setProperty('--navbar-bg', '#171529f5');
         root.style.setProperty('--font-title', '#fffffe');
