@@ -99,3 +99,14 @@ body {
 .def {
 	display: var(--status);
 }
+
+button {
+	border: none;
+	background-color: #e1e2e6;
+	border-radius: 10px;
+}
+
+button:hover {
+	transition: .3s;
+    background-color: #c9cace;
+}
