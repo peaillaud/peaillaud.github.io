@@ -48,3 +48,12 @@ divicon.onclick = function() {
     icon.classList.remove(inverse);
     icon.classList.add(moonOrSun);
 }
+
+
+window.onscroll = function() {
+    var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var hauteur = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var descendu = (scroll / hauteur) * 100;
+    document.getElementsByClassName('indicateurScroll')[0].style.width = descendu + "%";
+    console.log(descendu)
+}

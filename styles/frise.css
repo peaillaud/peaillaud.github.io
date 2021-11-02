@@ -20,15 +20,22 @@ body {
     transition: .3s;
 }
 
+.frise {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* Frise */
 
 .timeline {
     background-color: var(--navbar-bg);
     border-radius: 10px;
-    position: relative;
     max-width: 1200px;
-    margin: 20px auto;
+    position: relative;
+    margin: 85px auto;
+    z-index: 0;
     width: 70%;
 }
 

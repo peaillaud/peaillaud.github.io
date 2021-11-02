@@ -29,7 +29,7 @@ body {
 
 section {
     width: 50%;
-    margin: 25px auto;
+    margin: 85px auto;
 }
 
 .article::selection,
@@ -63,6 +63,9 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
 }
 
 .navbar {
@@ -71,6 +74,7 @@ header {
     background-color: var(--navbar-bg);
     transition: .5s;
     font-family: Roboto, sans-serif;
+    z-index: 1;
 }
 
 #logo {
@@ -120,4 +124,19 @@ header {
     text-decoration: none;
     color: var(--font-title);
     transition: .5s;
+}
+
+.indicateurScrollContainer {
+    width: 100%;
+    height: 6px;
+    position: fixed;
+    top: 65px;
+    z-index: 1;
+}
+
+.indicateurScroll {
+    height: 6px;
+    background: #b2b3b9;
+    width: 0%;
+    transition: .6s;
 }
