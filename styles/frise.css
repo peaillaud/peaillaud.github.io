@@ -1,119 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('./styles.css');
+
+/* Pour pouvoir utiliser les variables déclarées dans l'autre fichier*/
+
 :root {
-	--status: none;
+    --status: none;
 }
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 
 /* Couleur d'arriere plan */
+
 body {
-	background-color: #474e5d;
-	font-family: Helvetica, sans-serif;
+    background-color: var(--bg-color);
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    transition: .3s;
 }
 
+
 /* Frise */
+
 .timeline {
-	position: relative;
-	max-width: 1200px;
-	margin: 0 auto;
+    background-color: var(--navbar-bg);
+    border-radius: 10px;
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    width: 70%;
 }
 
 .timeline::after {
-	content: '';
-	position: absolute;
-	width: 6px;
-	background-color: white;
-	top: 0;
-	bottom: 0;
-	left: 50%;
-	margin-left: -3px;
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--bg-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
 }
 
+
 /* Bulle de contenu */
+
 .container {
-	padding: 10px 40px;
-	position: relative;
-	background-color: inherit;
-	width: 50%;
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
 }
 
 .container::after {
-	content: '';
-	position: absolute;
-	width: 25px;
-	height: 25px;
-	right: -17px;
-	background-color: white;
-	border: 4px solid #FF9F55;
-	top: 15px;
-	border-radius: 50%;
-	z-index: 1;
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--button-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .left {
-	left: 0;
+    left: 0;
 }
 
 .right {
-	left: 50%;
+    left: 50%;
 }
 
 .left::before {
-	content: " ";
-	height: 0;
-	position: absolute;
-	top: 22px;
-	width: 0;
-	z-index: 1;
-	right: 30px;
-	border: medium solid white;
-	border-width: 10px 0 10px 10px;
-	border-color: transparent transparent transparent white;
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid var(--bg-color);
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--bg-color);
 }
 
 .right::before {
-	content: " ";
-	height: 0;
-	position: absolute;
-	top: 22px;
-	width: 0;
-	z-index: 1;
-	left: 30px;
-	border: medium solid white;
-	border-width: 10px 10px 10px 0;
-	border-color: transparent white transparent transparent;
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid var(--bg-color);
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--bg-color) transparent transparent;
 }
 
 .right::after {
-	left: -16px;
+    left: -16px;
 }
 
 .content {
-	padding: 20px 30px;
-	background-color: white;
-	position: relative;
-	border-radius: 6px;
+    padding: 20px 30px;
+    background-color: var(--bg-color);
+    position: relative;
+    border-radius: 6px;
 }
 
 .def {
-	display: var(--status);
+    display: var(--status);
 }
 
 button {
-	border: none;
-	background-color: #e1e2e6;
-	border-radius: 10px;
-	box-shadow:
-		0 1px 2px rgba(0,0,0,0.07), 
-		0 2px 4px rgba(0,0,0,0.07), 
-		0 4px 8px rgba(0,0,0,0.07), 
-		0 8px 16px rgba(0,0,0,0.07),
-		0 16px 32px rgba(0,0,0,0.07), 
-		0 32px 64px rgba(0,0,0,0.07);
+    border: none;
+    margin-top: 5px;
+    padding: 8px;
+    background-color: var(--font-color);
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 }
 
 button:hover {
-	transition: .3s;
-    background-color: #c9cace;
+    transition: .3s;
+    background-color: var(--navbar-bg);
 }
