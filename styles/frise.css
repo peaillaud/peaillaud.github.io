@@ -2,11 +2,13 @@
 	box-sizing: border-box;
 }
 
+/* Couleur d'arriere plan */
 body {
 	background-color: #474e5d;
 	font-family: Helvetica, sans-serif;
 }
 
+/* Frise */
 .timeline {
 	position: relative;
 	max-width: 1200px;
@@ -24,6 +26,7 @@ body {
 	margin-left: -3px;
 }
 
+/* Bulle de contenu */
 .container {
 	padding: 10px 40px;
 	position: relative;
@@ -83,35 +86,8 @@ body {
 }
 
 .content {
-  padding: 20px 30px;
-  background-color: white;
-  position: relative;
-  border-radius: 6px;
-}
-
-@media screen and (max-width: 600px) {
-  .timeline::after {
-  left: 31px;
-  }
-  
-  .container {
-  width: 100%;
-  padding-left: 70px;
-  padding-right: 25px;
-  }
-  
-  .container::before {
-  left: 60px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
-  }
-
-  .left::after, .right::after {
-  left: 15px;
-  }
-  
-  .right {
-  left: 0%;
-  }
+	padding: 20px 30px;
+	background-color: white;
+	position: relative;
+	border-radius: 6px;
 }
