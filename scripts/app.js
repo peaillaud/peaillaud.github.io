@@ -20,7 +20,7 @@ divicon.onclick = function() {
         root.style.setProperty('--font-title', '#0d0d0d');
         root.style.setProperty('--font-paragraph', "#2a2a2a");
         root.style.setProperty('--button-color', '#ff8e3c');
-        root.style.colorScheme = 'light';
+        root.style.colorScheme = 'light'; // Non supporté sur Firefox...
         logo.style.filter = 'invert(0)';
         logo.style.transition = ".5s";
 
