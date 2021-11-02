@@ -55,5 +55,4 @@ window.onscroll = function() {
     var hauteur = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     var descendu = (scroll / hauteur) * 100;
     document.getElementsByClassName('indicateurScroll')[0].style.width = descendu + "%";
-    console.log(descendu)
 }
