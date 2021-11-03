@@ -62,9 +62,9 @@ header {
     overflow: hidden;
     position: fixed;
     top: 0;
-    border-bottom: 2px var(--font-title) solid;
+    /* border-bottom: 2px var(--font-title) solid; */
     height: 65px;
-    background-color: var(--navbar-bg);
+    background-color: var(--bg-color);
 }
 
 .navbar {
@@ -76,7 +76,7 @@ header {
 
 #logo {
     width: 150px;
-    margin: 0px 0px 0px 250px;
+    margin: 0px 0px 0px 130px;
 }
 
 .iconeThemeBtn {
@@ -96,7 +96,7 @@ header {
 
 .navig ul {
     list-style-type: none;
-    margin: 0 0 0 75px;
+    margin: 0 0 0 250px;
     padding: 0;
 }
 
