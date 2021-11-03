@@ -30,7 +30,7 @@ a {
     transition: .5s;
 }
 
-section {
+.main {
     width: 50%;
     margin: 85px auto;
 }
@@ -70,16 +70,16 @@ header {
     overflow: hidden;
     position: fixed;
     top: 0;
+    border-bottom: 2px var(--navbar-bg) solid;
+    height: 65px;
     background-color: var(--bg-color);
 }
 
 .navbar {
     width: 100%;
-    height: 65px;
-    border-bottom: 2px var(--navbar-bg) solid;
     transition: .5s;
     font-family: Roboto, sans-serif;
-    z-index: 1;
+    z-index: 10;
 }
 
 #logo {
@@ -136,7 +136,7 @@ header {
     height: 3px;
     position: fixed;
     top: 65px;
-    z-index: 1;
+    z-index: 10;
 }
 
 .indicateurScroll {
@@ -144,4 +144,5 @@ header {
     background: var(--button-color);
     width: 0%;
     transition: .6s;
+    z-index: 10;
 }
