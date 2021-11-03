@@ -162,7 +162,7 @@ img {
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: #ededed;
+    background-color: var(--bg-variant);
 }
 
 .container {
@@ -178,7 +178,8 @@ img {
 }
 
 .content {
-    color: #444444;
+    color: var(--font-title);
+    text-align: justify;
     font-size: 20px;
     position: absolute;
     top: 50%;
