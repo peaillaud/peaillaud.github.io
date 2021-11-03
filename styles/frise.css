@@ -1,9 +1,10 @@
+@import url('./variables.css');
 *:not(header),
 
 /*Exempter l'en-tête de prendre le style suivant, qui va être appliqué sur toute la page*/
 
-.timeline::before,
-.timeline::after {
+.frise::before,
+.frise::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,7 +13,7 @@
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 16px;
-    color: #000;
+    color: var(--font-paragraph);
     overflow-x: hidden;
     padding-bottom: 50px;
 }
@@ -20,33 +21,47 @@ body {
 
 /*Frise*/
 
-.timeline {
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.frise {
     margin-top: 25px;
     width: 70%;
-    background-color: #456990;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
     margin: 95px auto;
     border-radius: 30px;
 }
 
-.timeline ul {
-    background-color: #456990;
+.frise ul {
     padding: 25px 0;
     border-radius: 30px;
 }
 
-.timeline ul li {
+.frise ul li {
     list-style-type: none;
     position: relative;
     width: 6px;
     margin: 0 auto;
     padding-top: 50px;
     background-color: #fff;
+    text-align: justify;
 }
 
 
 /*Design du point de date*/
 
-.timeline ul li::after {
+.frise ul li::after {
     content: '';
     position: absolute;
     left: 50%;
@@ -59,7 +74,7 @@ body {
     z-index: 1;
 }
 
-.timeline ul li div {
+.frise ul li div {
     position: relative;
     bottom: 0;
     width: 400px;
@@ -68,7 +83,7 @@ body {
     border-radius: 7px;
 }
 
-.timeline ul li div::before {
+.frise ul li div::before {
     content: "";
     position: absolute;
     bottom: 7px;
@@ -77,21 +92,21 @@ body {
     border-style: solid;
 }
 
-.timeline ul li:nth-child(odd) div {
+.frise ul li:nth-child(odd) div {
     left: 45px;
 }
 
-.timeline ul li:nth-child(odd) div::before {
+.frise ul li:nth-child(odd) div::before {
     left: -15px;
     border-width: 8px 16px 8px 0;
     border-color: transparent #fff transparent transparent;
 }
 
-.timeline ul li:nth-child(even) div {
+.frise ul li:nth-child(even) div {
     left: -439px;
 }
 
-.timeline ul li:nth-child(even) div::before {
+.frise ul li:nth-child(even) div::before {
     right: -15px;
     border-width: 8px 0 8px 16px;
     border-color: transparent transparent transparent #fff;
@@ -99,6 +114,7 @@ body {
 
 time {
     display: block;
+    color: var(--font-title);
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 8px;
@@ -107,29 +123,29 @@ time {
 
 /*Effets et animations*/
 
-.timeline ul li::after {
+.frise ul li::after {
     transition: background 0.5s ease-in-out;
 }
 
-.timeline ul li.in-view::after {
+.frise ul li.in-view::after {
     background: #fff;
 }
 
-.timeline ul li div {
+.frise ul li div {
     visibility: hidden;
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
 
-.timeline ul li:nth-child(odd) div {
+.frise ul li:nth-child(odd) div {
     transform: translate3d(200px, 0, 0);
 }
 
-.timeline ul li:nth-child(even) div {
+.frise ul li:nth-child(even) div {
     transform: translate3d(-200px, 0, 0);
 }
 
-.timeline ul li.in-view div {
+.frise ul li.in-view div {
     transform: none;
     visibility: visible;
     opacity: 1;

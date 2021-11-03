@@ -15,11 +15,11 @@ divicon.onclick = function() {
 
         // Changement de la valeur des variables et du style CSS (mode clair)
 
-        root.style.setProperty('--bg-color', '#eff0f3');
-        root.style.setProperty('--navbar-bg', "#e1e2e6");
-        root.style.setProperty('--font-title', '#0d0d0d');
-        root.style.setProperty('--font-paragraph', "#2a2a2a");
-        root.style.setProperty('--button-color', '#ff8e3c');
+        root.style.setProperty('--bg-color', '#ededed');
+        root.style.setProperty('--navbar-bg', "#393E46");
+        root.style.setProperty('--font-title', '#393E46');
+        root.style.setProperty('--font-paragraph', "#393E46");
+        root.style.setProperty('--button-color', '#D65A31');
         root.style.colorScheme = 'light'; // Non supporté sur Firefox...
         logo.style.filter = 'invert(0)';
         logo.style.transition = ".5s";
