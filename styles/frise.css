@@ -1,3 +1,4 @@
+@import url('./variables.css');
 *:not(header),
 
 /*Exempter l'en-tête de prendre le style suivant, qui va être appliqué sur toute la page*/
@@ -12,7 +13,7 @@
 body {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 16px;
-    color: #000;
+    color: var(--font-paragraph);
     overflow-x: hidden;
     padding-bottom: 50px;
 }
@@ -20,16 +21,29 @@ body {
 
 /*Frise*/
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .frise {
     margin-top: 25px;
     width: 70%;
-    background-color: #456990;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
     margin: 95px auto;
     border-radius: 30px;
 }
 
 .frise ul {
-    background-color: #456990;
     padding: 25px 0;
     border-radius: 30px;
 }
@@ -100,6 +114,7 @@ body {
 
 time {
     display: block;
+    color: var(--font-title);
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 8px;
