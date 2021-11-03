@@ -1,8 +1,10 @@
-var root = document.documentElement;
+// Initialisation des variables
 
+var root = document.documentElement;
 var divicon = document.getElementById('themeBtn');
 var icon = document.getElementsByClassName('iconeThemeBtn')[0];
 var logo = document.getElementById('logo');
+var boutonHaut = document.querySelector("#retournerHaut");
 
 /**
  * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
@@ -66,4 +68,18 @@ window.onscroll = function() {
     var hauteur = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     var descendu = (scroll / hauteur) * 100;
     document.getElementsByClassName('indicateurScroll')[0].style.width = descendu + "%";
+    descendre()
+}
+
+function descendre() {
+    if (document.documentElement.scrollTop > 750 || document.body.scrollTop > 750) {
+        boutonHaut.style.opacity = '1';
+    } else {
+        boutonHaut.style.opacity = '0';
+    }
+}
+
+function retourHaut() {
+    document.body.scrollTop = 0; // Pour Chrome
+    document.documentElement.scrollTop = 0; // Pour le reste
 }
