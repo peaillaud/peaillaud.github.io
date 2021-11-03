@@ -1,45 +1,4 @@
 @import url('./variables.css');
-html {
-    scroll-behavior: smooth;
-}
-
-html::-webkit-scrollbar {
-    display: none;
-}
-
-.indicateurScrollContainer {
-    display: none;
-}
-
-
-/* Design de l'"avant-scroll" de l'utilisateur */
-
-.accueil {
-    font-family: Roboto;
-}
-
-.bienvenue-container {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-color);
-    color: var(--font-title);
-    transition: .5s;
-}
-
-.bienvenue {
-    width: 50vw;
-    text-align: center;
-    overflow: hidden;
-    margin: 0 auto;
-    white-space: nowrap;
-    margin: 0 auto;
-    font-size: 6.5rem;
-    font-weight: 500;
-    animation: typing 4s steps(40, end);
-}
-
 
 /* Animations */
 
@@ -63,15 +22,47 @@ html::-webkit-scrollbar {
 }
 
 
-/* Design de tout ce qu'il y a après le scroll */
+/* Propriétés HTML */
 
-.titreAccueil {
-    text-align: center;
-    font-size: 5vh;
+html {
+    scroll-behavior: smooth;
 }
 
-.suiteSite {
-    margin: 25vh auto;
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.indicateurScrollContainer {
+    display: none;
+}
+
+
+/* Design de la "page d'accueil" (non complète, avant qu'il scroll) de l'utilisateur */
+
+.accueil {
+    font-family: Roboto;
+}
+
+.bienvenue-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    color: var(--font-title);
+    transition: .5s;
+}
+
+.bienvenue {
+    width: 50vw;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: 14.5vh;
+    font-weight: 500;
+    animation: typing 4s steps(40, end);
 }
 
 .autoScroll {
@@ -88,4 +79,16 @@ html::-webkit-scrollbar {
     animation: bouncing 2.5s ease infinite;
     cursor: pointer;
     transition: .5s;
+}
+
+
+/* Design de tout ce qu'il y a après le scroll */
+
+.titreAccueil {
+    text-align: center;
+    font-size: 5vh;
+}
+
+.suiteSite {
+    margin: 25vh auto;
 }
