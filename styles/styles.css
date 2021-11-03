@@ -3,13 +3,12 @@
 
 /*Initialisation des variables, pouvant être changées en JS*/
 
- :root {
-    --bg-color: #eff0f3;
-    --navbar-bg: #e1e2e6;
-    --font-title: #0d0d0d;
-    --font-paragraph: #2a2a2a;
-    --button-color: #ff8e3c;
-    --font-text-button: var(--font-title);
+:root {
+    --bg-color: #ededed;
+    --navbar-bg: #393E46;
+    --font-title: #393E46;
+    --font-paragraph: #393E46;
+    --button-color: #D65A31;
     color-scheme: light;
 }
 
@@ -20,6 +19,10 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 .principal {
     padding: 25px;
     background-color: var(--bg-color);
@@ -27,13 +30,14 @@ body {
     transition: .5s;
 }
 
-section {
+.main {
     width: 50%;
     margin: 85px auto;
 }
 
 .article::selection,
-.titre::selection {
+.titre::selection,
+li::selection {
     color: var(--bg-color);
     background-color: var(--font-paragraph);
 }
@@ -66,19 +70,20 @@ header {
     overflow: hidden;
     position: fixed;
     top: 0;
+    border-bottom: 2px var(--navbar-bg) solid;
+    height: 65px;
+    background-color: var(--bg-color);
 }
 
 .navbar {
     width: 100%;
-    height: 65px;
-    background-color: var(--navbar-bg);
     transition: .5s;
     font-family: Roboto, sans-serif;
-    z-index: 1;
+    z-index: 10;
 }
 
 #logo {
-    width: 59px;
+    width: 150px;
     margin: 0px 0px 0px 250px;
 }
 
@@ -99,7 +104,7 @@ header {
 
 .navig ul {
     list-style-type: none;
-    margin: 0 0 0 100px;
+    margin: 0 0 0 75px;
     padding: 0;
 }
 
@@ -112,11 +117,11 @@ header {
 }
 
 .active {
-    border-bottom: 1px var(--font-paragraph) solid;
+    font-weight: bold;
 }
 
-.navig li:hover {
-    background-color: var(--bg-color);
+.navig li>a:hover {
+    color: var(--button-color);
     transition: .3s;
 }
 
@@ -128,15 +133,16 @@ header {
 
 .indicateurScrollContainer {
     width: 100%;
-    height: 6px;
+    height: 3px;
     position: fixed;
     top: 65px;
-    z-index: 1;
+    z-index: 10;
 }
 
 .indicateurScroll {
-    height: 6px;
-    background: #b2b3b9;
+    height: 3px;
+    background: var(--button-color);
     width: 0%;
     transition: .6s;
+    z-index: 10;
 }
