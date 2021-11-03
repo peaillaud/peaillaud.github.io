@@ -26,6 +26,7 @@ divicon.onclick = function() {
 
         if (document.location.pathname === "/pages/international.html") {
             document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(0)';
+            document.querySelector("body > div.principal > section > div > div.container > img").style.transition = ".5s";
         }
 
         // Changement de la valeur des variables JS (mode clair)
@@ -45,6 +46,8 @@ divicon.onclick = function() {
 
         if (document.location.pathname === "/pages/international.html") {
             document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(1)';
+            document.querySelector("body > div.principal > section > div > div.container > img").style.transition = ".5s";
+
         }
 
 
