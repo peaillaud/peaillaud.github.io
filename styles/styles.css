@@ -197,6 +197,7 @@ img {
     font-size: 1.3rem;
     margin: 25px 0 10px 0;
     font-family: 'Space Mono', 'Roboto', Arial, Helvetica, sans-serif;
+    text-indent: 20px;
 }
 
 .liste {

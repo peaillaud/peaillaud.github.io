@@ -52,7 +52,6 @@ divicon.onclick = function() {
 
         }
 
-
         // Changement de la valeur des variables JS (mode sombre)
         moonOrSun = "fa-moon";
         inverse = "fa-sun";
@@ -62,14 +61,9 @@ divicon.onclick = function() {
     icon.classList.add(moonOrSun);
 }
 
-
-window.onscroll = function() {
-    var scroll = document.body.scrollTop || document.documentElement.scrollTop;
-    var hauteur = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var descendu = (scroll / hauteur) * 100;
-    document.getElementsByClassName('indicateurScroll')[0].style.width = descendu + "%";
-    descendre()
-}
+/**
+ * Détecte lorsque l'utilisateur descend à un certain niveau de la page
+ */
 
 function descendre() {
     if (document.documentElement.scrollTop > 750 || document.body.scrollTop > 750) {
@@ -79,7 +73,22 @@ function descendre() {
     }
 }
 
+/**
+ * Renvoie l'utilisateur vers le haut de la page à l'appel de la fonction (par le bouton)
+ */
+
 function retourHaut() {
     document.body.scrollTop = 0; // Pour Chrome
     document.documentElement.scrollTop = 0; // Pour le reste
+}
+
+window.onscroll = function() {
+    var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var hauteur = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var descendu = (scroll / hauteur) * 100; // Avoir un pourcentage de ce qu'a descendu l'utilisateur
+    document.getElementsByClassName('indicateurScroll')[0].style.width = descendu + "%";
+    // Pour éviter les erreurs
+    if (document.body.contains(boutonHaut)) {
+        descendre()
+    }
 }
