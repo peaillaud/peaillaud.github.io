@@ -1,4 +1,8 @@
 @import url('./variables.css');
+html {
+    scroll-behavior: smooth;
+}
+
 html::-webkit-scrollbar {
     display: none;
 }
@@ -48,10 +52,39 @@ html::-webkit-scrollbar {
     }
 }
 
+@keyframes bouncing {
+    0%,
+    50% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+}
+
 
 /* Design de tout ce qu'il y a après le scroll */
 
 .titreAccueil {
     text-align: center;
     font-size: 5vh;
+}
+
+.suiteSite {
+    margin: 25vh auto;
+}
+
+.autoScroll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -15vh auto;
+    background-color: black;
+    color: white;
+    width: 8vh;
+    height: 8vh;
+    border-radius: 50%;
+    font-size: 6vh;
+    animation: bouncing 2.5s ease infinite;
+    cursor: pointer;
 }
