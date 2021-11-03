@@ -15,13 +15,13 @@ divicon.onclick = function() {
 
         // Changement de la valeur des variables et du style CSS (mode clair)
 
-        root.style.setProperty('--bg-color', '#ededed');
-        root.style.setProperty('--navbar-bg', "#393E46");
-        root.style.setProperty('--font-title', '#393E46');
-        root.style.setProperty('--font-paragraph', "#393E46");
+        root.style.setProperty('--bg-color', '#fff');
+        root.style.setProperty('--navbar-bg', "#ededed");
+        root.style.setProperty('--font-title', '#444');
+        root.style.setProperty('--font-paragraph', "#4e4e4e");
         root.style.setProperty('--button-color', '#D65A31');
         root.style.colorScheme = 'light'; // Non supporté sur Firefox...
-        logo.style.filter = 'invert(0)';
+        logo.style.filter = 'invert(0)'
         logo.style.transition = ".5s";
 
         // Changement de la valeur des variables JS (mode clair)
@@ -30,11 +30,11 @@ divicon.onclick = function() {
     } else if (icon.classList.contains('fa-sun')) {
 
         // Changement de la valeur des variables et du style CSS (mode sombre)
-        root.style.setProperty('--bg-color', '#0f0e17');
-        root.style.setProperty('--navbar-bg', '#171529f5');
-        root.style.setProperty('--font-title', '#fffffe');
-        root.style.setProperty('--font-paragraph', "#a7a9be");
-        root.style.setProperty('--button-color', '#ff8906');
+        root.style.setProperty('--bg-color', '#222831');
+        root.style.setProperty('--navbar-bg', '#393e46');
+        root.style.setProperty('--font-title', '#eee');
+        root.style.setProperty('--font-paragraph', "#cecece");
+        root.style.setProperty('--button-color', '#D65A31');
         root.style.colorScheme = 'dark';
         logo.style.filter = 'invert(1)';
         logo.style.transition = ".5s";

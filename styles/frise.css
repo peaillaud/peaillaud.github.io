@@ -10,9 +10,10 @@
     box-sizing: border-box;
 }
 
-body {
+.frise {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 1.8rem;
     color: var(--font-paragraph);
     overflow-x: hidden;
     padding-bottom: 50px;
@@ -115,9 +116,9 @@ body {
 time {
     display: block;
     color: var(--font-title);
-    font-size: 1.2rem;
+    font-size: 25px;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 
