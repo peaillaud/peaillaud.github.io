@@ -7,6 +7,9 @@ html::-webkit-scrollbar {
     display: none;
 }
 
+
+/* Design de l'"avant-scroll" de l'utilisateur */
+
 .accueil {
     font-family: Roboto;
 }
@@ -30,20 +33,11 @@ html::-webkit-scrollbar {
     margin: 0 auto;
     font-size: 6.5rem;
     font-weight: 500;
-    animation: typing 3.5s steps(40, end);
+    animation: typing 4s steps(40, end);
 }
 
 
-/* @keyframes jumpin {
-    0% {
-        transform: translateY(150px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-} */
+/* Animations */
 
 @keyframes typing {
     0% {
@@ -52,4 +46,12 @@ html::-webkit-scrollbar {
     100% {
         width: 100%;
     }
+}
+
+
+/* Design de tout ce qu'il y a après le scroll */
+
+.titreAccueil {
+    text-align: center;
+    font-size: 5vh;
 }
