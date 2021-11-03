@@ -1,7 +1,7 @@
 (function() {
 
     // define variables
-    var items = document.querySelectorAll(".timeline li");
+    var items = document.querySelectorAll(".frise li");
 
     // check if an element is in viewport
     // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
