@@ -21,8 +21,12 @@ divicon.onclick = function() {
         root.style.setProperty('--font-paragraph', "#4e4e4e");
         root.style.setProperty('--button-color', '#D65A31');
         root.style.colorScheme = 'light'; // Non supporté sur Firefox...
-        logo.style.filter = 'invert(0)'
+        logo.style.filter = 'invert(0)';
         logo.style.transition = ".5s";
+
+        if (document.location.pathname === "/pages/international.html") {
+            document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(0)';
+        }
 
         // Changement de la valeur des variables JS (mode clair)
         moonOrSun = "fa-sun";
@@ -38,6 +42,10 @@ divicon.onclick = function() {
         root.style.colorScheme = 'dark';
         logo.style.filter = 'invert(1)';
         logo.style.transition = ".5s";
+
+        if (document.location.pathname === "/pages/international.html") {
+            document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(1)';
+        }
 
 
         // Changement de la valeur des variables JS (mode sombre)
