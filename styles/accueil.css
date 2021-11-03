@@ -79,12 +79,13 @@ html::-webkit-scrollbar {
     align-items: center;
     justify-content: center;
     margin: -15vh auto;
-    background-color: black;
-    color: white;
+    background-color: var(--button-color);
+    color: var(--bg-color);
     width: 8vh;
     height: 8vh;
     border-radius: 50%;
     font-size: 6vh;
     animation: bouncing 2.5s ease infinite;
     cursor: pointer;
+    transition: .5s;
 }
