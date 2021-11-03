@@ -1,0 +1,55 @@
+@import url('./variables.css');
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.indicateurScrollContainer {
+    display: none;
+}
+
+.accueil {
+    font-family: Roboto;
+}
+
+.bienvenue-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    color: var(--font-title);
+    transition: .5s;
+}
+
+.bienvenue {
+    width: 50vw;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: 6.5rem;
+    font-weight: 500;
+    animation: typing 3.5s steps(40, end);
+}
+
+
+/* @keyframes jumpin {
+    0% {
+        transform: translateY(150px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+} */
+
+@keyframes typing {
+    0% {
+        width: 0
+    }
+    100% {
+        width: 100%;
+    }
+}
