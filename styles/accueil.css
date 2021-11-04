@@ -34,6 +34,21 @@
     }
 }
 
+@keyframes montrer {
+    0%,
+    50% {
+        opacity: 0;
+        transform: translateY(20vh);
+    }
+    75% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* Propriétés HTML */
 
@@ -91,7 +106,7 @@ html::-webkit-scrollbar {
     height: 8vh;
     border-radius: 50%;
     font-size: 6vh;
-    animation: bouncing 2.5s ease infinite;
+    animation: bouncing 2.5s ease infinite 2s, montrer 2s;
     cursor: pointer;
     transition: .5s;
     z-index: 10;

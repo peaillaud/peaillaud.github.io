@@ -36,7 +36,8 @@ a {
 .article::selection,
 .titre::selection,
 .date::selection,
-li::selection {
+li::selection,
+code::selection {
     color: var(--bg-color);
     background-color: var(--font-paragraph);
 }
@@ -280,4 +281,10 @@ footer h1 {
 .sources::-webkit-scrollbar-thumb {
     background: var(--bg-color);
     border-radius: 10px;
+}
+
+.legendeimg {
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
 }
