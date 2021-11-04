@@ -8,9 +8,99 @@ html {
     scroll-behavior: smooth;
 }
 
-.feather,
-.sun {
-    stroke: var(--font-title);
+#themeBtn #dmtoggle {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 32px;
+    opacity: .25;
+    cursor: pointer;
+    transition: transform .3s, opacity .15s;
+}
+
+body.dark #themeBtn #dmtoggle {
+    transform: rotate(-45deg);
+}
+
+#themeBtn #dmtoggle:hover {
+    opacity: 1;
+}
+
+#themeBtn #dmtoggle div {
+    position: absolute;
+    background: var(--font-paragraph);
+    transition: transform .3s, background .3s, opacity .3s;
+}
+
+body.dark #themeBtn #dmtoggle div {
+    background: var(--font-paragraph);
+}
+
+#themeBtn #dmtoggle .arc,
+#themeBtn #dmtoggle .darc {
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+}
+
+body.dark #themeBtn #dmtoggle .arc {
+    transform: scale(1.2);
+}
+
+#themeBtn #dmtoggle .darc {
+    background: var(--bg-color);
+    transform: translateX(24px);
+}
+
+body.dark #themeBtn #dmtoggle .darc {
+    transform: translateX(6px);
+    background: var(--bg-color);
+}
+
+#themeBtn #dmtoggle .ray {
+    width: 6px;
+    height: 2px;
+    border-radius: 2px;
+}
+
+#themeBtn #dmtoggle .ray.one {
+    transform: rotate(0deg) translateX(14px);
+}
+
+#themeBtn #dmtoggle .ray.two {
+    transform: rotate(45deg) translateX(14px);
+}
+
+#themeBtn #dmtoggle .ray.three {
+    transform: rotate(90deg) translateX(14px);
+}
+
+#themeBtn #dmtoggle .ray.four {
+    transform: rotate(135deg) translateX(14px);
+}
+
+#themeBtn #dmtoggle .ray.five {
+    transform: rotate(180deg) translateX(14px);
+}
+
+#themeBtn #dmtoggle .ray.six {
+    transform: rotate(225deg) translateX(14px);
+}
+
+#themeBtn #dmtoggle .ray.seven {
+    transform: rotate(270deg) translateX(14px);
+}
+
+#themeBtn #dmtoggle .ray.eight {
+    transform: rotate(315deg) translateX(14px);
+}
+
+body.dark #themeBtn #dmtoggle .ray {
+    transform: scaleX(0.01);
+    opacity: 0;
 }
 
 
@@ -253,7 +343,7 @@ footer h1 {
     font-size: 3.5vh;
 }
 
-.footer-liste {
+#themeBtn-liste {
     margin: 9px 0;
     list-style: none;
     padding: 0;

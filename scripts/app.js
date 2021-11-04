@@ -5,6 +5,7 @@ var divicon = document.getElementById('themeBtn');
 var iconClasses = document.getElementsByClassName('iconeThemeBtn')[0];
 var logo = document.getElementById('logo');
 var boutonHaut = document.querySelector("#retournerHaut");
+var graphImage = document.querySelector("body > div.principal > section > div > div.container > img")
 
 var webp = document.location.pathname
 var webpage = webp.split('/')
@@ -15,10 +16,11 @@ var page = webpage.pop()
  */
 
 divicon.onclick = function() {
-    let icon = iconClasses.classList[1];
     let moonOrSun;
     let inverse;
-    if (icon === 'sun') {
+    let nomTheme;
+    let nomThemeOppose;
+    if (document.body.classList.contains('light')) {
         // Changement de la valeur des variables et du style CSS (mode clair)
 
         root.style.setProperty('--bg-color', '#fff');
@@ -31,15 +33,15 @@ divicon.onclick = function() {
         logo.style.transition = ".5s";
 
         if (page === "international.html") {
-            document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(0)';
-            document.querySelector("body > div.principal > section > div > div.container > img").style.transition = ".5s";
+            graphImage.style.filter = 'invert(0)';
+            graphImage.style.transition = ".5s";
         }
 
         // Changement de la valeur des variables JS (mode clair)
-        moonOrSun = "moon";
-        inverse = "sun";
+        nomTheme = "light";
+        nomThemeOppose = "dark";
 
-    } else if (icon === 'moon') {
+    } else if (document.body.classList.contains('dark')) {
 
         // Changement de la valeur des variables et du style CSS (mode sombre)
         root.style.setProperty('--bg-color', '#222831');
@@ -52,18 +54,16 @@ divicon.onclick = function() {
         logo.style.transition = ".5s";
 
         if (page === "international.html") {
-            document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(1)';
-            document.querySelector("body > div.principal > section > div > div.container > img").style.transition = ".5s";
+            graphImage.style.filter = 'invert(1)';
+            graphImage.style.transition = ".5s";
 
         }
-        moonOrSun = "sun";
-        inverse = "moon";
+        nomTheme = "dark";
+        nomThemeOppose = "light";
     }
-
-    iconClasses.classList.remove(inverse);
-    iconClasses.classList.add(moonOrSun);
-    iconClasses.src = `./images/${moonOrSun}.svg`
-    console.log({ inverse, moonOrSun })
+    document.body.classList.remove(nomTheme);
+    document.body.classList.add(nomThemeOppose);
+    console.log(document.body.classList)
 }
 
 /**
