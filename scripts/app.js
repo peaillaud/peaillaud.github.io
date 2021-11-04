@@ -6,6 +6,12 @@ var icon = document.getElementsByClassName('iconeThemeBtn')[0];
 var logo = document.getElementById('logo');
 var boutonHaut = document.querySelector("#retournerHaut");
 
+var webp = document.location.pathname
+var webpage = webp.split('/')
+var page = webpage.pop()
+
+console.log(page)
+
 /**
  * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
  */
@@ -26,7 +32,7 @@ divicon.onclick = function() {
         logo.style.filter = 'invert(0)';
         logo.style.transition = ".5s";
 
-        if (document.location.pathname === "/pages/international.html") {
+        if (page === "international.html") {
             document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(0)';
             document.querySelector("body > div.principal > section > div > div.container > img").style.transition = ".5s";
         }
@@ -46,7 +52,7 @@ divicon.onclick = function() {
         logo.style.filter = 'invert(1)';
         logo.style.transition = ".5s";
 
-        if (document.location.pathname === "/pages/international.html") {
+        if (page === "international.html") {
             document.querySelector("body > div.principal > section > div > div.container > img").style.filter = 'invert(1)';
             document.querySelector("body > div.principal > section > div > div.container > img").style.transition = ".5s";
 
