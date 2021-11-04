@@ -28,7 +28,7 @@
         border-radius: 0;
     }
     100% {
-        transform: translateY(-1000px) rotate(720deg);
+        transform: translateY(-150vh) rotate(720deg);
         opacity: 0;
         border-radius: 50%;
     }
@@ -58,6 +58,7 @@ html {
 
 html::-webkit-scrollbar {
     display: none;
+    /* Incompatible avec Firefox */
 }
 
 .indicateurScrollContainer {
@@ -106,7 +107,7 @@ html::-webkit-scrollbar {
     height: 8vh;
     border-radius: 50%;
     font-size: 6vh;
-    animation: bouncing 2.5s ease infinite 2s, montrer 2s;
+    animation: bouncing 2.5s ease infinite 3s, montrer 2s;
     cursor: pointer;
     transition: .5s;
     z-index: 10;
