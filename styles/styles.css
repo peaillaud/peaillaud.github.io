@@ -35,8 +35,9 @@ a {
 
 .article::selection,
 .titre::selection,
-.date::selection,
-li::selection {
+.sous-titre::selection,
+li::selection,
+code::selection {
     color: var(--bg-color);
     background-color: var(--font-paragraph);
 }
@@ -196,7 +197,7 @@ img {
     font-family: Roboto, sans-serif;
 }
 
-.date {
+.sous-titre {
     font-size: 1.3rem;
     margin: 25px 0 10px 0;
     font-family: 'Space Mono', 'Roboto', Arial, Helvetica, sans-serif;
@@ -280,4 +281,10 @@ footer h1 {
 .sources::-webkit-scrollbar-thumb {
     background: var(--bg-color);
     border-radius: 10px;
+}
+
+.legendeimg {
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
 }
