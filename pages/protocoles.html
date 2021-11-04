@@ -50,6 +50,59 @@
                 DARPA accepta de financer le développement du logiciel prototype, et après plusieurs années de travail, la première démonstration quelque peu rustique de ce qu'était alors devenu le TCP/IP eut lieu en juillet 1977. Cette nouvelle méthode
                 se répandit au travers des réseaux, et le 1er janvier 1983 les protocoles TCP/IP devenaient officiellement le seul protocole sur l'ARPANET, remplaçant le précédent protocole NCP (RFC 801).
 
+				<div class="saut"></div>
+
+				En effet, le TCP/IP est une suite de reseaux et de protocoles utilises pour le transfert de donnees sur Internet.<br>
+				
+				IP est la partie qui obtient l'adresse à laquelle les données sont envoyées. TCP est responsable de la livraison des données une fois que cette adresse IP a été trouvée. Pour cela, le TCP/IP decompose chaque donnee en paquets, qui sont ensuite reassembles a la destination. Ainsi, chaque paquet peut emprunter un itineraire different vers l'autre ordinateur, si le premier itineraire n'est pas disponible.
+
+				<div class="saut"></div>
+
+				<div class="container">
+					<img src="../images/paquets.webp" alt="decomposition en paquets">
+					<div class="overlay">
+						<div class="content">
+							<strong>Shema representant le transport de donnees grace au TCP/IP</strong>
+						</div>
+					</div>
+				</div>
+
+				<div class="saut"></div>
+
+				Son modèle est divisé en quatre couches distinctes. Utilisées ensemble, elles peuvent également être appelées une suite de protocoles.
+
+				<ul>
+					<li>
+						<b>Couche de liaison de donnees:</b><br>
+						La couche Internet, également appelée couche réseau, contrôle le mouvement des paquets sur le réseau.
+					</li>
+					<div class="saut"></div>
+					<li>
+						<b>Couche Internet:</b><br>
+						La couche transport fournit une connexion des données fiable entre deux appareils. Elle divise les données en paquets, accuse réception des paquets qu'elle a reçus de l'autre appareil et s'assure que ce dernier accuse réception des paquets qu'il reçoit.
+					</li>
+					<div class="saut"></div>
+					<li>
+						<b>Couche transport:</b><br>
+						La couche transport fournit une connexion des données fiable entre deux appareils. Elle divise les données en paquets, accuse réception des paquets qu'elle a reçus de l'autre appareil et s'assure que ce dernier accuse réception des paquets qu'il reçoit.
+					</li>
+					<div class="saut"></div>
+					<li>
+						<b>Couche application:</b><br>
+						La couche application est le groupe d'applications nécessitant une communication réseau. Il s'agit généralement de l'application avec laquelle l'utilisateur interagit, comme les e-mails et la messagerie. Parce que les couches inférieures gèrent les détails de la communication, les applications n'ont pas besoin de s'en préoccuper.
+					</li>
+				</ul>
+
+				<div class="saut"></div>
+
+				<div class="container">
+					<img src="../images/Data_Flow_of_the_Internet_Protocol_Suite.png" alt="Transport de donnee">
+					<div class="overlay">
+						<div class="content">
+							<strong>Shema des differentes couches</strong>
+						</div>
+					</div>
+				</div>
             </div>
 
         </section>
