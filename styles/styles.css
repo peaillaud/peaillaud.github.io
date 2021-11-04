@@ -14,6 +14,7 @@ html {
 body {
     margin: 0;
     background: var(--bg-color);
+    transition: .5s;
 }
 
 a {
@@ -241,6 +242,7 @@ footer {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    transition: .6s;
 }
 
 footer h1 {

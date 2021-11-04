@@ -68,8 +68,14 @@ divicon.onclick = function() {
 function descendre() {
     if (document.documentElement.scrollTop > 750 || document.body.scrollTop > 750) {
         boutonHaut.style.opacity = '1';
+        boutonHaut.disabled = false;
+        boutonHaut.style.cursor = 'pointer';
+        boutonHaut.setAttribute('title', 'Retourner au début');
     } else {
         boutonHaut.style.opacity = '0';
+        boutonHaut.disabled = true;
+        boutonHaut.style.cursor = 'initial';
+        boutonHaut.removeAttribute('title');
     }
 }
 
