@@ -81,7 +81,8 @@ header {
     width: 100%;
     transition: .5s;
     font-family: Roboto, sans-serif;
-    z-index: 10;
+    z-index: 99;
+    /* Pour éviter que quelque chose ne passe par dessus*/
 }
 
 #logo {
