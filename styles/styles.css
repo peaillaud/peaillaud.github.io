@@ -8,6 +8,11 @@ html {
     scroll-behavior: smooth;
 }
 
+.feather,
+.sun {
+    stroke: var(--font-title);
+}
+
 
 /*Écrasement de la valeur margin par défaut du body, définition du style des sections principales*/
 
@@ -46,7 +51,7 @@ a {
 }
 
 .titre {
-    color: var(--font-title);
+    color: var(--button-color);
     font-size: 35px;
     font-family: 'Space Mono', monospace, Roboto, sans-serif;
     transition: .5s;

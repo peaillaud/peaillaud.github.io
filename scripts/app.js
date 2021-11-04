@@ -2,7 +2,7 @@
 
 var root = document.documentElement;
 var divicon = document.getElementById('themeBtn');
-var icon = document.getElementsByClassName('iconeThemeBtn')[0];
+var iconClasses = document.getElementsByClassName('iconeThemeBtn')[0];
 var logo = document.getElementById('logo');
 var boutonHaut = document.querySelector("#retournerHaut");
 
@@ -15,10 +15,10 @@ var page = webpage.pop()
  */
 
 divicon.onclick = function() {
+    let icon = iconClasses.classList[1];
     let moonOrSun;
     let inverse;
-    if (icon.classList.contains('fa-moon')) {
-
+    if (icon === 'sun') {
         // Changement de la valeur des variables et du style CSS (mode clair)
 
         root.style.setProperty('--bg-color', '#fff');
@@ -36,9 +36,10 @@ divicon.onclick = function() {
         }
 
         // Changement de la valeur des variables JS (mode clair)
-        moonOrSun = "fa-sun";
-        inverse = "fa-moon";
-    } else if (icon.classList.contains('fa-sun')) {
+        moonOrSun = "moon";
+        inverse = "sun";
+
+    } else if (icon === 'moon') {
 
         // Changement de la valeur des variables et du style CSS (mode sombre)
         root.style.setProperty('--bg-color', '#222831');
@@ -55,14 +56,14 @@ divicon.onclick = function() {
             document.querySelector("body > div.principal > section > div > div.container > img").style.transition = ".5s";
 
         }
-
-        // Changement de la valeur des variables JS (mode sombre)
-        moonOrSun = "fa-moon";
-        inverse = "fa-sun";
+        moonOrSun = "sun";
+        inverse = "moon";
     }
 
-    icon.classList.remove(inverse);
-    icon.classList.add(moonOrSun);
+    iconClasses.classList.remove(inverse);
+    iconClasses.classList.add(moonOrSun);
+    iconClasses.src = `./images/${moonOrSun}.svg`
+    console.log({ inverse, moonOrSun })
 }
 
 /**
