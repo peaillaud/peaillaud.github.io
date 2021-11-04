@@ -1,7 +1,9 @@
-var button = document.querySelector('body > div.accueil > div.autoScroll')
+var button = document.querySelector('body > div.accueil > div.autoScroll');
+var suiteSite = document.getElementsByClassName('suiteSite')[0];
+var donneeY = suiteSite.getBoundingClientRect().top + window.pageYOffset;
 
 button.onclick = function() {
-    location.href = "#contenu";
+    window.scrollTo({ top: donneeY - 65 })
 }
 
 /**
