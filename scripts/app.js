@@ -10,8 +10,6 @@ var webp = document.location.pathname
 var webpage = webp.split('/')
 var page = webpage.pop()
 
-console.log(page)
-
 /**
  * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
  */
