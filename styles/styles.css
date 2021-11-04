@@ -8,6 +8,9 @@ html {
     scroll-behavior: smooth;
 }
 
+
+/* Design du bouton pour changer le thème*/
+
 #themeBtn #dmtoggle {
     width: 48px;
     height: 48px;
@@ -21,7 +24,7 @@ html {
     transition: transform .3s, opacity .15s;
 }
 
-body.dark #themeBtn #dmtoggle {
+body.light #themeBtn #dmtoggle {
     transform: rotate(-45deg);
 }
 
@@ -35,7 +38,7 @@ body.dark #themeBtn #dmtoggle {
     transition: transform .3s, background .3s, opacity .3s;
 }
 
-body.dark #themeBtn #dmtoggle div {
+body.light #themeBtn #dmtoggle div {
     background: var(--font-paragraph);
 }
 
@@ -46,7 +49,7 @@ body.dark #themeBtn #dmtoggle div {
     border-radius: 16px;
 }
 
-body.dark #themeBtn #dmtoggle .arc {
+body.light #themeBtn #dmtoggle .arc {
     transform: scale(1.2);
 }
 
@@ -55,7 +58,7 @@ body.dark #themeBtn #dmtoggle .arc {
     transform: translateX(24px);
 }
 
-body.dark #themeBtn #dmtoggle .darc {
+body.light #themeBtn #dmtoggle .darc {
     transform: translateX(6px);
     background: var(--bg-color);
 }
@@ -98,7 +101,7 @@ body.dark #themeBtn #dmtoggle .darc {
     transform: rotate(315deg) translateX(14px);
 }
 
-body.dark #themeBtn #dmtoggle .ray {
+body.light #themeBtn #dmtoggle .ray {
     transform: scaleX(0.01);
     opacity: 0;
 }

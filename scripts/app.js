@@ -16,27 +16,14 @@ var page = webpage.pop()
  */
 
 divicon.onclick = function() {
-    let moonOrSun;
-    let inverse;
     let nomTheme;
     let nomThemeOppose;
     if (document.body.classList.contains('light')) {
         // Changement de la valeur des variables et du style CSS (mode clair)
-
-        root.style.setProperty('--bg-color', '#fff');
-        root.style.setProperty('--bg-variant', "#ededed");
-        root.style.setProperty('--font-title', '#444');
-        root.style.setProperty('--font-paragraph', "#4e4e4e");
-        root.style.setProperty('--button-color', '#D65A31');
-        root.style.colorScheme = 'light'; // Non supporté sur Firefox...
-        logo.style.filter = 'invert(0)';
-        logo.style.transition = ".5s";
-
         if (page === "international.html") {
             graphImage.style.filter = 'invert(0)';
             graphImage.style.transition = ".5s";
         }
-
         // Changement de la valeur des variables JS (mode clair)
         nomTheme = "light";
         nomThemeOppose = "dark";
@@ -44,14 +31,6 @@ divicon.onclick = function() {
     } else if (document.body.classList.contains('dark')) {
 
         // Changement de la valeur des variables et du style CSS (mode sombre)
-        root.style.setProperty('--bg-color', '#222831');
-        root.style.setProperty('--bg-variant', '#393e46');
-        root.style.setProperty('--font-title', '#eee');
-        root.style.setProperty('--font-paragraph', "#cecece");
-        root.style.setProperty('--button-color', '#D65A31');
-        root.style.colorScheme = 'dark';
-        logo.style.filter = 'invert(1)';
-        logo.style.transition = ".5s";
 
         if (page === "international.html") {
             graphImage.style.filter = 'invert(1)';
@@ -63,7 +42,27 @@ divicon.onclick = function() {
     }
     document.body.classList.remove(nomTheme);
     document.body.classList.add(nomThemeOppose);
-    console.log(document.body.classList)
+
+    if (document.body.classList.contains('light')) {
+        root.style.setProperty('--bg-color', '#fff');
+        root.style.setProperty('--bg-variant', "#ededed");
+        root.style.setProperty('--font-title', '#444');
+        root.style.setProperty('--font-paragraph', "#4e4e4e");
+        root.style.setProperty('--button-color', '#D65A31');
+        root.style.colorScheme = 'light'; // Non supporté sur Firefox...
+        logo.style.filter = 'invert(0)';
+        logo.style.transition = ".5s";
+
+    } else if (document.body.classList.contains('dark')) {
+        root.style.setProperty('--bg-color', '#222831');
+        root.style.setProperty('--bg-variant', '#393e46');
+        root.style.setProperty('--font-title', '#eee');
+        root.style.setProperty('--font-paragraph', "#cecece");
+        root.style.setProperty('--button-color', '#D65A31');
+        root.style.colorScheme = 'dark';
+        logo.style.filter = 'invert(1)';
+        logo.style.transition = ".5s";
+    }
 }
 
 /**
