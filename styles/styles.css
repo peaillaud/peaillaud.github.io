@@ -35,7 +35,7 @@ a {
 
 .article::selection,
 .titre::selection,
-.date::selection,
+.sous-titre::selection,
 li::selection,
 code::selection {
     color: var(--bg-color);
@@ -197,7 +197,7 @@ img {
     font-family: Roboto, sans-serif;
 }
 
-.date {
+.sous-titre {
     font-size: 1.3rem;
     margin: 25px 0 10px 0;
     font-family: 'Space Mono', 'Roboto', Arial, Helvetica, sans-serif;
