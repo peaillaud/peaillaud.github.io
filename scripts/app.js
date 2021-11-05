@@ -70,6 +70,10 @@ divicon.onclick = function() {
  */
 
 function descendre() {
+	/*
+	 * NOTE: document.documentElement.scrollTop fonctionne sur google chrome
+	 * tandis que document.body.scrollTop fonctionne sur firefox.
+	 */
     if (document.documentElement.scrollTop > 750 || document.body.scrollTop > 750) {
         boutonHaut.style.opacity = '1';
         boutonHaut.disabled = false;
