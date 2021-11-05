@@ -16,7 +16,8 @@
     color-scheme: dark;
 }
 
-.dark #logo {
+.dark #logo,
+.dark .changer {
     filter: invert(1);
     transition: filter 0.3s;
 }
