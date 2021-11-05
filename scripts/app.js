@@ -1,9 +1,10 @@
 // Initialisation des variables
 var divicon = document.getElementById('themeBtn');
-var logo = document.getElementById('logo');
 var boutonHaut = document.querySelector("#retournerHaut");
-var graphImage = document.querySelector("body > div.principal > section > div > div.container > img");
-var page = document.location.pathname.split('/').pop();
+
+//var logo = document.getElementById('logo');
+//var graphImage = document.querySelector("body > div.principal > section > div > div.container > img");
+//var page = document.location.pathname.split('/').pop();
 
 /**
  * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
@@ -45,7 +46,7 @@ function changerTheme() {
 function descendre() {
     /*
      * NOTE: document.documentElement.scrollTop ne fonctionne que sur Chromium
-     * tandis que document.body.scrollTop ne fonctionne que sur Firefox
+     *       tandis que document.body.scrollTop ne fonctionne que sur Firefox
      */
     if (document.documentElement.scrollTop > 750 || document.body.scrollTop > 750) {
         boutonHaut.style.opacity = '1';
@@ -85,7 +86,7 @@ function updateScrollIndicator() {
 }
 
 /**
- * Fonctin appelée au chargement de la page, qui permet de changer le thème du site en fonction de la valeur de la variable localStorage
+ * Fonction appelée au chargement de la page, qui permet de changer le thème du site en fonction de la valeur de la variable localStorage
  */
 
 function definirTheme() {
