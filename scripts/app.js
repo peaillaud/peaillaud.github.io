@@ -1,72 +1,45 @@
 // Initialisation des variables
-
-var root = document.documentElement;
 var divicon = document.getElementById('themeBtn');
-var iconClasses = document.getElementsByClassName('iconeThemeBtn')[0];
 var logo = document.getElementById('logo');
 var boutonHaut = document.querySelector("#retournerHaut");
-var graphImage = document.querySelector("body > div.principal > section > div > div.container > img")
-
-var webp = document.location.pathname
-var webpage = webp.split('/')
-var page = webpage.pop()
+var graphImage = document.querySelector("body > div.principal > section > div > div.container > img");
+var page = document.location.pathname.split('/').pop();
 
 /**
  * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
  */
 
-divicon.onclick = function() {
+function changerTheme() {
     let nomTheme;
     let nomThemeOppose;
     if (document.body.classList.contains('light')) {
-        // Changement de la valeur des variables et du style CSS (mode clair)
-        if (page === "international.html") {
-            graphImage.style.filter = 'invert(0)';
-            graphImage.style.transition = ".5s";
-        }
         // Changement de la valeur des variables JS (mode clair)
         nomTheme = "light";
         nomThemeOppose = "dark";
+        document.body.classList.remove(nomTheme);
+        document.body.classList.add(nomThemeOppose);
 
     } else if (document.body.classList.contains('dark')) {
-
-        // Changement de la valeur des variables et du style CSS (mode sombre)
-
-        if (page === "international.html") {
-            graphImage.style.filter = 'invert(1)';
-            graphImage.style.transition = ".5s";
-
-        }
         nomTheme = "dark";
         nomThemeOppose = "light";
+        document.body.classList.remove(nomTheme);
+        document.body.classList.add(nomThemeOppose);
+    } else if (document.body.classList.length === 0) {
+        nomTheme = "light";
+        nomThemeOppose = "dark";
+        document.body.classList.add(nomThemeOppose);
     }
-    document.body.classList.remove(nomTheme);
-    document.body.classList.add(nomThemeOppose);
 
-    if (document.body.classList.contains('light')) {
-        root.style.setProperty('--bg-color', '#fff');
-        root.style.setProperty('--bg-variant', "#ededed");
-        root.style.setProperty('--font-title', '#444');
-        root.style.setProperty('--font-paragraph', "#4e4e4e");
-        root.style.setProperty('--button-color', '#D65A31');
-        root.style.colorScheme = 'light'; // Non supporté sur Firefox...
-        logo.style.filter = 'invert(0)';
-        logo.style.transition = ".5s";
-
-    } else if (document.body.classList.contains('dark')) {
-        root.style.setProperty('--bg-color', '#222831');
-        root.style.setProperty('--bg-variant', '#393e46');
-        root.style.setProperty('--font-title', '#eee');
-        root.style.setProperty('--font-paragraph', "#cecece");
-        root.style.setProperty('--button-color', '#D65A31');
-        root.style.colorScheme = 'dark';
-        logo.style.filter = 'invert(1)';
-        logo.style.transition = ".5s";
+    if (localStorage.getItem('theme') !== null) {
+        localStorage.removeItem('theme');
+        localStorage.setItem('theme', nomThemeOppose);
+    } else {
+        localStorage.setItem('theme', nomThemeOppose)
     }
 }
 
 /**
- * Détecte lorsque l'utilisateur descend à un certain niveau de la page
+ * Détecte lorsque l'utilisateur descend à un certain niveau de la page, et modifie les propriétés du bouton associé
  */
 
 function descendre() {
@@ -92,13 +65,43 @@ function retourHaut() {
     document.documentElement.scrollTop = 0; // Pour le reste
 }
 
-window.onscroll = function() {
+/**
+ * Met à jour le scroll indicator à chaque fois que l'utilisateur scroll
+ */
+
+function updateScrollIndicator() {
     var scroll = document.body.scrollTop || document.documentElement.scrollTop;
     var hauteur = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     var descendu = (scroll / hauteur) * 100; // Avoir un pourcentage de ce qu'a descendu l'utilisateur
     document.getElementsByClassName('indicateurScroll')[0].style.width = descendu + "%";
     // Pour éviter les erreurs
     if (document.body.contains(boutonHaut)) {
-        descendre()
+        descendre();
     }
+}
+
+/**
+ * Fonctin appelée au chargement de la page, qui permet de changer le thème du site en fonction de la valeur de la variable localStorage
+ */
+
+function definirTheme() {
+    if (document.body.classList.length === 0 && localStorage.getItem('theme') === null) {
+        document.body.classList.add('light');
+    } else {
+        document.body.classList.add(localStorage.getItem('theme'));
+    }
+}
+
+// Appel des fonctions aux différents événements
+
+window.onscroll = function() {
+    updateScrollIndicator();
+}
+
+window.onload = function() {
+    definirTheme();
+}
+
+divicon.onclick = function() {
+    changerTheme();
 }

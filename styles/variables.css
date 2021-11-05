@@ -1,8 +1,22 @@
-:root {
+.light {
     --bg-color: #fff;
     --bg-variant: #ededed;
     --font-title: #444;
     --font-paragraph: #4e4e4e;
     --button-color: #D65A31;
     color-scheme: light;
+}
+
+.dark {
+    --bg-color: #222831;
+    --bg-variant: #393e46;
+    --font-title: #eee;
+    --font-paragraph: #cecece;
+    --button-color: #D65A31;
+    color-scheme: dark;
+}
+
+.dark #logo {
+    filter: invert(1);
+    transition: filter 0.3s;
 }

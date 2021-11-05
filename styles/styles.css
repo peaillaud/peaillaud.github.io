@@ -31,7 +31,7 @@ body.light #themeBtn #dmtoggle {
 #themeBtn #dmtoggle div {
     position: absolute;
     background: var(--font-paragraph);
-    transition: transform .3s, background .3s, opacity .3s;
+    transition: .3s;
 }
 
 #themeBtn #dmtoggle:hover div:not(.darc) {
@@ -135,7 +135,7 @@ a {
     margin: 85px auto;
 }
 
-::selection {
+ ::selection {
     color: var(--bg-color);
     background-color: var(--font-paragraph);
 }
