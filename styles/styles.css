@@ -28,18 +28,22 @@ body.light #themeBtn #dmtoggle {
     transform: rotate(-45deg);
 }
 
-#themeBtn #dmtoggle:hover {
-    opacity: .25;
-}
-
 #themeBtn #dmtoggle div {
     position: absolute;
     background: var(--font-paragraph);
     transition: transform .3s, background .3s, opacity .3s;
 }
 
+#themeBtn #dmtoggle:hover div:not(.darc) {
+    background: var(--button-color);
+}
+
 body.light #themeBtn #dmtoggle div {
     background: var(--font-paragraph);
+}
+
+body.light #themeBtn #dmtoggle:hover .arc {
+    background: var(--button-color);
 }
 
 #themeBtn #dmtoggle .arc,
