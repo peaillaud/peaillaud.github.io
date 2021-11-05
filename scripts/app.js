@@ -43,6 +43,10 @@ function changerTheme() {
  */
 
 function descendre() {
+    /*
+     * NOTE: document.documentElement.scrollTop ne fonctionne que sur Chromium
+     * tandis que document.body.scrollTop ne fonctionne que sur Firefox
+     */
     if (document.documentElement.scrollTop > 750 || document.body.scrollTop > 750) {
         boutonHaut.style.opacity = '1';
         boutonHaut.disabled = false;
