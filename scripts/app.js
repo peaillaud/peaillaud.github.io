@@ -31,12 +31,16 @@ function changerTheme() {
         document.body.classList.add(nomThemeOppose);
     }
 
-    if (localStorage.getItem('theme') !== null) {
-        localStorage.removeItem('theme');
-        localStorage.setItem('theme', nomThemeOppose);
-    } else {
-        localStorage.setItem('theme', nomThemeOppose)
-    }
+    if (navigator.cookieEnabled === true) { // Pour enregistrer le choix de l'utilisateur
+        if (localStorage.getItem('theme') !== null) {
+            localStorage.removeItem('theme');
+            localStorage.setItem('theme', nomThemeOppose);
+        } else {
+            localStorage.setItem('theme', nomThemeOppose);
+        }
+    } else if (navigator.cookieEnabled === false) return; // On ne crée pas d'erreur si l'utilisateur n'a pas activé les cookies
+
+
 }
 
 /**
@@ -90,11 +94,17 @@ function updateScrollIndicator() {
  */
 
 function definirTheme() {
-    if (document.body.classList.length === 0 && localStorage.getItem('theme') === null) {
+
+    if (navigator.cookieEnabled === true) { // On regarde si l'utilisateur a activé les cookies
+        if (document.body.classList.length === 0 && localStorage.getItem('theme') === null) {
+            document.body.classList.add('light');
+        } else {
+            document.body.classList.add(localStorage.getItem('theme'));
+        }
+    } else { // Sinon, le body n'a pas de class et ne s'affichera pas correctement, car les variables ne seront pas chargées
         document.body.classList.add('light');
-    } else {
-        document.body.classList.add(localStorage.getItem('theme'));
     }
+
 }
 
 // Appel des fonctions aux différents événements
