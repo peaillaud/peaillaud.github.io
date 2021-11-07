@@ -3,7 +3,7 @@ var suiteSite = document.getElementsByClassName('suiteSite')[0];
 var donneeY = suiteSite.getBoundingClientRect().top + window.pageYOffset;
 
 button.onclick = function() {
-    window.scrollTo({ top: donneeY - 65 })
+    window.scrollTo({ top: donneeY - 80 })
 }
 
 /**

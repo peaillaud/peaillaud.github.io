@@ -124,8 +124,15 @@ html::-webkit-scrollbar {
 
 .titreAccueil {
     text-align: center;
-    font-size: 5vh;
+    font-size: 2.3vw;
     color: var(--font-title);
+}
+
+.underline {
+    margin-top: 6px;
+    width: 43vw;
+    height: 32px;
+    user-select: none;
 }
 
 .suiteSite {

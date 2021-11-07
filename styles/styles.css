@@ -130,12 +130,17 @@ a {
     transition: .5s;
 }
 
-.main {
-    width: 50%;
-    margin: 85px auto;
+@media screen and (min-width:1440px) {
+    .main {
+        width: 50%;
+    }
 }
 
- ::selection {
+.main {
+    margin: 80px auto;
+}
+
+::selection {
     color: var(--bg-color);
     background-color: var(--font-paragraph);
 }
