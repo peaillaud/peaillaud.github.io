@@ -2,31 +2,32 @@
 var divicon = document.getElementById('themeBtn');
 var boutonHaut = document.querySelector("#retournerHaut");
 
-//var logo = document.getElementById('logo');
-//var graphImage = document.querySelector("body > div.principal > section > div > div.container > img");
-//var page = document.location.pathname.split('/').pop();
+/*
+var logo = document.getElementById('logo');
+var graphImage = document.querySelector("body > div.principal > section > div > div.container > img");
+var page = document.location.pathname.split('/').pop();
+*/
 
 /**
  * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
  */
 
 function changerTheme() {
-    let nomTheme;
+    let nomThemeActif;
     let nomThemeOppose;
     if (document.body.classList.contains('light')) {
-        // Changement de la valeur des variables JS (mode clair)
-        nomTheme = "light";
+        nomThemeActif = "light";
         nomThemeOppose = "dark";
-        document.body.classList.remove(nomTheme);
+        document.body.classList.remove(nomThemeActif);
         document.body.classList.add(nomThemeOppose);
 
     } else if (document.body.classList.contains('dark')) {
-        nomTheme = "dark";
+        nomThemeActif = "dark";
         nomThemeOppose = "light";
-        document.body.classList.remove(nomTheme);
+        document.body.classList.remove(nomThemeActif);
         document.body.classList.add(nomThemeOppose);
     } else if (document.body.classList.length === 0) {
-        nomTheme = "light";
+        nomThemeActif = "light";
         nomThemeOppose = "dark";
         document.body.classList.add(nomThemeOppose);
     }

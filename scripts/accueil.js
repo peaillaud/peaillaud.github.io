@@ -7,7 +7,7 @@ button.onclick = function() {
 }
 
 /**
- * Gère l'afffichage du bouton en fonction de ce qu'a descendu l'utilisateur sur la page    
+ * Gère l'afffichage du bouton de bienvenue en fonction de ce qu'a descendu l'utilisateur sur la page    
  */
 function verifBouton() {
     if (getComputedStyle(button).opacity == '1' && document.documentElement.scrollTop > 80) {
