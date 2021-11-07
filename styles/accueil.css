@@ -258,7 +258,7 @@ html::-webkit-scrollbar {
 .quote {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto 5em 7em 5em;
     font-family: 'Dongle';
 }

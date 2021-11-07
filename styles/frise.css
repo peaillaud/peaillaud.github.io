@@ -35,12 +35,11 @@
 }
 
 .frise {
-    margin-top: 25px;
     width: 70%;
     background: linear-gradient(-45deg, var(--font-title), var(--bg-color));
     background-size: 400% 400%;
     animation: gradient 5s ease infinite;
-    margin: 95px auto;
+    margin: 0 auto;
     border-radius: 30px;
 }
 
