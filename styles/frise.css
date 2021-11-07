@@ -128,7 +128,7 @@ time {
     transition: background 0.5s ease-in-out;
 }
 
-.frise ul li.in-view::after {
+.frise ul li.friseActif::after {
     background: var(--bg-color);
 }
 
@@ -146,7 +146,7 @@ time {
     transform: translate3d(-200px, 0, 0);
 }
 
-.frise ul li.in-view div {
+.frise ul li.friseActif div {
     transform: none;
     visibility: visible;
     opacity: 1;

@@ -18,15 +18,15 @@ function champDeVision(element) {
 }
 
 /**
- * Fonction qui ajoute la classe 'in-view' à chaque élément rentrant dans le champ de vision, à l'aide de la fonction champDeVision()
+ * Fonction qui ajoute la classe 'friseActif' à chaque élément rentrant dans le champ de vision, à l'aide de la fonction champDeVision()
  */
 function ajoutClasse() {
     for (var i = 0; i < items.length; i++) {
         if (champDeVision(items[i])) {
-            items[i].classList.add("in-view");
+            items[i].classList.add("friseActif");
         }
-        if (!champDeVision(items[i]) && items[i].classList.contains("in-view")) {
-            items[i].classList.remove("in-view");
+        if (!champDeVision(items[i]) && items[i].classList.contains("friseActif")) {
+            items[i].classList.remove("friseActif");
         }
     }
 }
