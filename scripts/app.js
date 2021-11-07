@@ -4,7 +4,7 @@ var boutonHaut = document.querySelector("#retournerHaut");
 
 /*
 var logo = document.getElementById('logo');
-var graphImage = document.querySelector("body > div.principal > section > div > div.container > img");
+var graphImage = document.querySelector("body > div.principal > article > div > div.container > img");
 var page = document.location.pathname.split('/').pop();
 */
 
