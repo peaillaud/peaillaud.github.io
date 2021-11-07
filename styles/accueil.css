@@ -259,7 +259,7 @@ html::-webkit-scrollbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: auto 5em auto 5em;
+    margin: auto 5em 7em 5em;
     font-family: 'Dongle';
 }
 
@@ -271,7 +271,7 @@ html::-webkit-scrollbar {
 blockquote {
     font-family: 'Dongle', sans-serif;
     font-size: 40px;
-    margin: 0.25em 0 2em;
+    margin: 0;
     padding: 0.25em 40px;
     line-height: 1.45;
     position: relative;
