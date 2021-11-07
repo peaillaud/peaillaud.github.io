@@ -284,6 +284,7 @@ img {
 
 .content {
     color: var(--font-title);
+    padding: 10px;
     text-align: center;
     width: fit-content;
     font-size: 20px;
@@ -293,6 +294,7 @@ img {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     font-family: Roboto, sans-serif;
+    line-height: 45px;
 }
 
 .sous-titre {

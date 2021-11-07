@@ -1,4 +1,5 @@
 @import url('./variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
 
 /* Animations */
 
@@ -129,7 +130,7 @@ html::-webkit-scrollbar {
 
 .suiteSite {
     margin: 35vh auto;
-	color: var(--font-paragraph);
+    color: var(--font-paragraph);
 }
 
 
@@ -232,42 +233,58 @@ html::-webkit-scrollbar {
     animation-duration: 11s;
 }
 
-.center {
-	margin: auto;
-	width: 50%;
-	padding: 10px;
+.quotes {
+    padding: 10px;
+    margin-top: 80px;
+}
+
+.quote {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto 5em auto 5em;
+    font-family: 'Dongle';
+}
+
+.imgquote {
+    width: 250px;
+    border-radius: 10px;
 }
 
 blockquote {
-	font-family: Helvetica, Arial, serif;
-	font-size: 30px;
-	font-style: italic;
-	width: 90%;
-	margin: 0.25em 0 2em;
-	padding: 0.25em 40px;
-	line-height: 1.45;
-	position: relative;
-	color: #383838;
+    font-family: 'Dongle', sans-serif;
+    font-size: 40px;
+    margin: 0.25em 0 2em;
+    padding: 0.25em 40px;
+    line-height: 1.45;
+    position: relative;
+    width: 55%;
+}
+
+blockquote i {
+    color: var(--font-paragraph);
+    font-style: normal;
 }
 
 blockquote:before {
-	font-family: Georgia, serif;
-	display: block;
-	content: "\201C";
-	font-size: 100px;
-	position: absolute;
-	left: -10px;
-	top: -35px;
-	color: #ccc;
+    font-family: Georgia, serif;
+    display: block;
+    content: "\201C";
+    font-size: 100px;
+    position: absolute;
+    left: -10px;
+    top: -35px;
+    color: var(--button-color);
 }
 
 blockquote cite {
-	color: #870237;
-	font-size: 25px;
-	display: block;
-	margin-top: 5px;
+    color: var(--font-title);
+    font-size: 32px;
+    display: block;
+    margin-top: 10px;
+    opacity: .8;
 }
 
 blockquote cite:before {
-	content: "\2014 \2009";
+    content: "\2014 \2009";
 }
