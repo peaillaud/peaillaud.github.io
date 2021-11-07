@@ -18,7 +18,7 @@ function champDeVision(element) {
 }
 
 /**
- * Fonction qui ajoute la classe 'friseActif' à chaque élément rentrant dans le champ de vision, à l'aide de la fonction champDeVision()
+ * Fonction qui ajoute ou enlève la classe 'friseActif' à chaque élément rentrant ou sortant dans le champ de vision, à l'aide de la fonction champDeVision()
  */
 function ajoutClasse() {
     for (var i = 0; i < items.length; i++) {
