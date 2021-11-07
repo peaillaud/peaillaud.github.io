@@ -129,6 +129,7 @@ html::-webkit-scrollbar {
 
 .suiteSite {
     margin: 35vh auto;
+	color: var(--font-paragraph);
 }
 
 
@@ -231,59 +232,42 @@ html::-webkit-scrollbar {
     animation-duration: 11s;
 }
 
-
-.quote {
-	height:auto; 
-	width:370px;
-	border:1px solid var(--font-paragraph);
-	margin: 100px auto;
-	text-align:center;
-	position:relative;
-	padding:15px;
+.center {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
 }
 
-span{
-	background:var(--bg-color);
-	color: var(--font-title);
-	padding:0 10px;
-	font-size:20px;
-	position:relative;
-	top:-28px;
+blockquote {
+	font-family: Helvetica, Arial, serif;
+	font-size: 30px;
+	font-style: italic;
+	width: 90%;
+	margin: 0.25em 0 2em;
+	padding: 0.25em 40px;
+	line-height: 1.45;
+	position: relative;
+	color: #383838;
 }
 
-.corner{
-	height:30px;
-	width:30px;
-	border-radius:50%;
-	border:1px solid;
-	transform:rotate(-45deg);
-	position:absolute;
-	background: var(--bg-color);
+blockquote:before {
+	font-family: Georgia, serif;
+	display: block;
+	content: "\201C";
+	font-size: 100px;
+	position: absolute;
+	left: -10px;
+	top: -35px;
+	color: #ccc;
 }
 
-#left_top{
-	top:-16px;
-	left:-16px;
-	border-color:transparent transparent var(--font-paragraph) transparent;
-}
-#right_top{
-	top:-16px;
-	right:-16px;
-	border-color:transparent transparent transparent var(--font-paragraph);
-}
-#left_bottom{
-	bottom:-16px;
-	left:-16px;
-	border-color:transparent var(--font-paragraph) transparent transparent ;
-}
-#right_bottom{
-	bottom:-16px;
-	right:-16px;
-	border-color:var(--font-paragraph) transparent transparent transparent;
+blockquote cite {
+	color: #870237;
+	font-size: 25px;
+	display: block;
+	margin-top: 5px;
 }
 
-p { 
-	padding-top:13px;
-	font-size:18px;
-    color: var(--font-paragraph);
+blockquote cite:before {
+	content: "\2014 \2009";
 }
