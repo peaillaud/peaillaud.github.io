@@ -128,11 +128,21 @@ html::-webkit-scrollbar {
     color: var(--font-title);
 }
 
-.underline {
+.underline-container {
     margin-top: 6px;
     width: 43vw;
     height: 32px;
     user-select: none;
+    position: relative;
+    margin: auto;
+}
+
+.underline {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
 }
 
 .suiteSite {
