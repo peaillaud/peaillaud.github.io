@@ -25,6 +25,9 @@ function ajoutClasse() {
         if (champDeVision(items[i])) {
             items[i].classList.add("in-view");
         }
+        if (!champDeVision(items[i]) && items[i].classList.contains("in-view")) {
+            items[i].classList.remove("in-view");
+        }
     }
 }
 
