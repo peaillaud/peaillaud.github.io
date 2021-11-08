@@ -178,7 +178,7 @@ header {
     position: fixed;
     top: 0;
     /* border-bottom: 2px var(--font-title) solid; */
-    height: 65px;
+    height: 9.2vh;
     background-color: var(--bg-color);
 }
 
@@ -191,7 +191,7 @@ header {
 }
 
 #logo {
-    width: 150px;
+    width: 9.7vw;
     margin: 0px 0px 0px 130px;
 }
 
