@@ -18,7 +18,7 @@ function createShaderProgram(gl, vSource, fSource) {
     const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vSource);
 }
 
-window.onload = function() {
+window.addEventListener('load', function() {
     /** @type {HTMLCanvasElement} */
     const canvas = document.querySelector("#canvas1");
 
@@ -44,4 +44,4 @@ window.onload = function() {
     ];
 
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-}
+})
