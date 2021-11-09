@@ -392,5 +392,11 @@ footer h1 {
 #canvas1 {
     border: 1px solid black;
     border-radius: 2%;
-    margin: 200px 400px;
+    margin: 200px auto;
+}
+
+.canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

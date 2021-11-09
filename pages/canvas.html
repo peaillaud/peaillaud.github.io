@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <meta name="description" content="canvas">
@@ -6,12 +10,10 @@
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="../scripts/app.js"></script>
-    
-    <script src="../scripts/canvas.js"></script>
 </head>
-<body onload="draw();">
-   <header class="navbar">
+
+<body>
+    <header class="navbar">
         <a href="../index.html"><img src="../images/logo_paysage.png" alt="" id="logo" srcset=""></a>
         <nav class="navig">
             <ul>
@@ -40,7 +42,15 @@
         </div>
 
     </header>
-    <div class="principal">
+    <div class="indicateurScrollContainer">
+        <div class="indicateurScroll"></div>
+    </div>
+    <div class="principal canvas">
         <canvas id="canvas1" width="1080" height="720"></canvas>
     </div>
+
+    <script src="../scripts/app.js"></script>
+    <script src="../scripts/canvas.js"></script>
 </body>
+
+</html>
