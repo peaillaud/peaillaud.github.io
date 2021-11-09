@@ -53,10 +53,6 @@
 
 /* Propriétés HTML */
 
-html {
-    scroll-behavior: smooth;
-}
-
 html::-webkit-scrollbar {
     display: none;
     /* Incompatible avec Firefox */

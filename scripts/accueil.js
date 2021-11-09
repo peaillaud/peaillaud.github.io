@@ -2,10 +2,6 @@ var button = document.querySelector('body > div.accueil > div.autoScroll');
 var suiteSite = document.getElementsByClassName('suiteSite')[0];
 var donneeY = suiteSite.getBoundingClientRect().top + window.pageYOffset;
 
-button.onclick = function() {
-    window.scrollTo({ top: donneeY - 80 })
-}
-
 /**
  * Gère l'afffichage du bouton de bienvenue en fonction de ce qu'a descendu l'utilisateur sur la page    
  */
@@ -17,4 +13,19 @@ function verifBouton() {
     }
 }
 
+// Convertir les VH en PX pour compenser la taille du header lors du scroll
+
+function vhPx(valeur) {
+    var y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+
+    var result = (y * valeur) / 100;
+    return result;
+}
+
+
 window.onscroll = verifBouton;
+button.onclick = function() {
+    window.scrollTo({
+        top: donneeY - vhPx(10)
+    })
+}
