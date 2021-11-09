@@ -10,10 +10,33 @@ window.addEventListener('load', function () {
         return;
     }
 
-    this.fetch('../shaders/vertex.glsl').then(x => x.text()).then(y => alert(y));
+	const vsSource = `
+	  attribute vec4 aVertexPosition;
 
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+	  uniform mat4 uModelViewMatrix;
+	  uniform mat4 uProjectionMatrix;
+
+	  void main() {
+		gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+	  }`;
+	
+
+	const fsSource = `
+		void main() {
+		  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+		}`;
+
+	const shaderProgram = createShaderProgram(gl, vsSource, fsSource);
+	const programInfo = {
+		program: shaderProgram,
+		attribLocations: {
+			vertexPositions: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
+		},
+		uniformLocations: {
+			projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
+			modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
+		},
+	};
 
     const vbo = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
@@ -26,6 +49,35 @@ window.addEventListener('load', function () {
     ];
 
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+	gl.clearDepth(1.0);
+	gl.enable(gl.DEPTH_TEST);
+	gl.depthFunc(gl.LEQUAL);
+
+	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+	const fov = 45 * Math.PI / 180;
+	const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+	const zNear = 0.1;
+	const zFar = 100.0;
+
+	const projectionMatrix = mat4.create();
+	mat4.perspective(projectionMatrix, fov, aspect, zNear, zFar);
+
+	const modelViewMatrix = mat4.create();
+
+	mat4.translate(modelViewMatrix, modelViewMatrix, [-0.0, 0.0, -6.0]);
+
+	gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 2, gl.FLOAT, false, 0, 0);
+	gl.enableVertexAttribArray(programInfo.attribLocations.vertexPositions);
+
+	gl.useProgram(programInfo.program);
+
+	gl.uniformMatrix4fv(programInfo.uniformLocations.projectionMatrix, false, projectionMatrix);
+	gl.uniformMatrix4fv(programInfo.uniformLocations.modelViewMatrix, false, modelViewMatrix);
+
+	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 })
 
 function loadShader(gl, type, source) {
