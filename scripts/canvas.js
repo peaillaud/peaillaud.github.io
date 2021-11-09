@@ -86,6 +86,9 @@ window.addEventListener('load', function () {
 
 	mat4.translate(modelViewMatrix, modelViewMatrix, [-0.0, 0.0, -6.0]);
 
+	var squareRotation = 72.0;
+	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation), [0, 0, 1]);
+
 	{
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 2, gl.FLOAT, false, 0, 0);
