@@ -22,7 +22,7 @@
     }
 }
 
-@keyframes animate {
+@keyframes cubes {
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
@@ -47,6 +47,17 @@
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes displayQuotes {
+    0% {
+        opacity: 0;
+        transform: translateX(100vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
@@ -167,7 +178,7 @@ html::-webkit-scrollbar {
     width: 20px;
     height: 20px;
     background: #8e8e8e;
-    animation: animate 25s linear infinite;
+    animation: cubes 25s linear infinite;
     bottom: -150px;
 }
 
@@ -252,11 +263,16 @@ html::-webkit-scrollbar {
 }
 
 .quote {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-around;
     margin: auto 5em 7em 5em;
     font-family: 'Dongle';
+}
+
+.quoteactif {
+    display: flex;
+    animation: displayQuotes 1s ease-in-out;
 }
 
 .imgquote {
