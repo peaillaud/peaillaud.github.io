@@ -11,19 +11,25 @@ window.addEventListener('load', function () {
     }
 
 	const vsSource = `
-	  attribute vec4 aVertexPosition;
+		attribute vec4 aVertexPosition;
+		attribute vec4 aVertexColor;
 
-	  uniform mat4 uModelViewMatrix;
-	  uniform mat4 uProjectionMatrix;
+		uniform mat4 uModelViewMatrix;
+		uniform mat4 uProjectionMatrix;
 
-	  void main() {
-		gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
-	  }`;
+		varying lowp vec4 vColor;
+
+		void main() {
+			gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+			vColor = aVertexColor;
+		}`;
 	
 
 	const fsSource = `
+		varying lowp vec4 vColor;
+
 		void main() {
-		  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+		  gl_FragColor = vColor;
 		}`;
 
 	const shaderProgram = createShaderProgram(gl, vsSource, fsSource);
@@ -31,6 +37,7 @@ window.addEventListener('load', function () {
 		program: shaderProgram,
 		attribLocations: {
 			vertexPositions: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
+			vertexColor: gl.getAttribLocation(shaderProgram, 'aVertexColor'),
 		},
 		uniformLocations: {
 			projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
@@ -38,9 +45,7 @@ window.addEventListener('load', function () {
 		},
 	};
 
-    const vbo = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
-
+    const vertexBuffer = gl.createBuffer();
     const positions = [
         1.0, 1.0,
         -1.0, 1.0,
@@ -48,7 +53,19 @@ window.addEventListener('load', function () {
         -1.0, -1.0,
     ];
 
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+	const colorBuffer = gl.createBuffer();
+	const colors = [
+		1.0,  1.0,  1.0,  1.0,    // blanc
+		1.0,  0.0,  0.0,  1.0,    // rouge
+		0.0,  1.0,  0.0,  1.0,    // vert
+		0.0,  0.0,  1.0,  1.0,    // bleu
+	];
+
+	gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
 
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.clearDepth(1.0);
@@ -69,8 +86,19 @@ window.addEventListener('load', function () {
 
 	mat4.translate(modelViewMatrix, modelViewMatrix, [-0.0, 0.0, -6.0]);
 
-	gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 2, gl.FLOAT, false, 0, 0);
-	gl.enableVertexAttribArray(programInfo.attribLocations.vertexPositions);
+	{
+		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+		gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 2, gl.FLOAT, false, 0, 0);
+		gl.enableVertexAttribArray(programInfo.attribLocations.vertexPositions);
+	}
+
+	{
+		gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+		gl.vertexAttribPointer(programInfo.attribLocations.vertexColor, 4, gl.FLOAT, false, 0, 0);
+		gl.enableVertexAttribArray(programInfo.attribLocations.vertexColor);
+	}
+
+	gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 
 	gl.useProgram(programInfo.program);
 
