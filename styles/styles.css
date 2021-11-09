@@ -388,3 +388,9 @@ footer h1 {
     background: var(--bg-color);
     border-radius: 10px;
 }
+
+#canvas1 {
+    border: 1px solid black;
+    border-radius: 2%;
+    margin: 200px 400px;
+}
