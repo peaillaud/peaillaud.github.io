@@ -1,3 +1,5 @@
+var squareRotation = 0.0;
+
 window.addEventListener('load', function () {
     /** @type {HTMLCanvasElement} */
     const canvas = document.querySelector("#canvas1");
@@ -67,6 +69,19 @@ window.addEventListener('load', function () {
 	gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
 
+	var then = 0;
+	function render(now) {
+		now *= 0.1;
+		const deltaTime = now - then;
+		then = now;
+
+		drawScene(gl, programInfo, vertexBuffer, colorBuffer, deltaTime);
+		requestAnimationFrame(render);
+	}
+	this.requestAnimationFrame(render);
+})
+
+function drawScene(gl, programInfo, vertexBuffer, colorBuffer, deltaTime) {
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.clearDepth(1.0);
 	gl.enable(gl.DEPTH_TEST);
@@ -86,8 +101,7 @@ window.addEventListener('load', function () {
 
 	mat4.translate(modelViewMatrix, modelViewMatrix, [-0.0, 0.0, -6.0]);
 
-	var squareRotation = 72.0;
-	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation), [0, 0, 1]);
+	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation), [0, 1, 0]);
 
 	{
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -109,7 +123,10 @@ window.addEventListener('load', function () {
 	gl.uniformMatrix4fv(programInfo.uniformLocations.modelViewMatrix, false, modelViewMatrix);
 
 	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-})
+
+	squareRotation += deltaTime;
+	console.log(squareRotation);
+}
 
 function loadShader(gl, type, source) {
     const shader = gl.createShader(type);
