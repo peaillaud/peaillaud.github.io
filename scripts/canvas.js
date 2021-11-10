@@ -49,25 +49,78 @@ window.addEventListener('load', function () {
 
     const vertexBuffer = gl.createBuffer();
     const positions = [
-        1.0, 1.0,
-        -1.0, 1.0,
-        1.0, -1.0,
-        -1.0, -1.0,
-    ];
+		// Front face
+		-1.0, -1.0,  1.0,
+		1.0, -1.0,  1.0,
+		1.0,  1.0,  1.0,
+		-1.0,  1.0,  1.0,
+
+		// Back face
+		-1.0, -1.0, -1.0,
+		-1.0,  1.0, -1.0,
+		1.0,  1.0, -1.0,
+		1.0, -1.0, -1.0,
+
+		// Top face
+		-1.0,  1.0, -1.0,
+		-1.0,  1.0,  1.0,
+		1.0,  1.0,  1.0,
+		1.0,  1.0, -1.0,
+
+		// Bottom face
+		-1.0, -1.0, -1.0,
+		1.0, -1.0, -1.0,
+		1.0, -1.0,  1.0,
+		-1.0, -1.0,  1.0,
+
+		// Right face
+		1.0, -1.0, -1.0,
+		1.0,  1.0, -1.0,
+		1.0,  1.0,  1.0,
+		1.0, -1.0,  1.0,
+
+		// Left face
+		-1.0, -1.0, -1.0,
+		-1.0, -1.0,  1.0,
+		-1.0,  1.0,  1.0,
+		-1.0,  1.0, -1.0,
+	];
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
 	const colorBuffer = gl.createBuffer();
-	const colors = [
-		1.0,  1.0,  1.0,  1.0,    // blanc
-		1.0,  0.0,  0.0,  1.0,    // rouge
-		0.0,  1.0,  0.0,  1.0,    // vert
-		0.0,  0.0,  1.0,  1.0,    // bleu
+
+	const faceColors = [
+		[1.0,  1.0,  1.0,  1.0],
+		[1.0,  0.0,  0.0,  1.0],
+		[0.0,  1.0,  0.0,  1.0],
+		[0.0,  0.0,  1.0,  1.0],
+		[1.0,  1.0,  0.0,  1.0],
+		[1.0,  0.0,  1.0,  1.0],
 	];
+
+	var colors = [];
+	for (var i = 0; i < faceColors.length; ++i) {
+		const c = faceColors[i];
+		colors = colors.concat(c, c, c, c);
+	}
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+
+	const indexBuffer = gl.createBuffer();
+	const indices = [
+		0,  1,  2,      0,  2,  3,    // front
+		4,  5,  6,      4,  6,  7,    // back
+		8,  9,  10,     8,  10, 11,   // top
+		12, 13, 14,     12, 14, 15,   // bottom
+		16, 17, 18,     16, 18, 19,   // right
+		20, 21, 22,     20, 22, 23,   // left
+	];
+
+	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
 	var then = 0;
 	function render(now) {
@@ -75,13 +128,13 @@ window.addEventListener('load', function () {
 		const deltaTime = now - then;
 		then = now;
 
-		drawScene(gl, programInfo, vertexBuffer, colorBuffer, deltaTime);
+		drawScene(gl, programInfo, vertexBuffer, colorBuffer, indexBuffer, deltaTime);
 		requestAnimationFrame(render);
 	}
 	this.requestAnimationFrame(render);
 })
 
-function drawScene(gl, programInfo, vertexBuffer, colorBuffer, deltaTime) {
+function drawScene(gl, programInfo, vertexBuffer, colorBuffer, indexBuffer, deltaTime) {
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.clearDepth(1.0);
 	gl.enable(gl.DEPTH_TEST);
@@ -101,11 +154,11 @@ function drawScene(gl, programInfo, vertexBuffer, colorBuffer, deltaTime) {
 
 	mat4.translate(modelViewMatrix, modelViewMatrix, [-0.0, 0.0, -6.0]);
 
-	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation), [0, 1, 0]);
+	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation), [1, 1, 1]);
 
 	{
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-		gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 2, gl.FLOAT, false, 0, 0);
+		gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 3, gl.FLOAT, false, 0, 0);
 		gl.enableVertexAttribArray(programInfo.attribLocations.vertexPositions);
 	}
 
@@ -122,7 +175,7 @@ function drawScene(gl, programInfo, vertexBuffer, colorBuffer, deltaTime) {
 	gl.uniformMatrix4fv(programInfo.uniformLocations.projectionMatrix, false, projectionMatrix);
 	gl.uniformMatrix4fv(programInfo.uniformLocations.modelViewMatrix, false, modelViewMatrix);
 
-	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+	gl.drawElements(gl.TRIANGLES, 36, gl.UNSIGNED_SHORT, 0);
 
 	squareRotation += deltaTime;
 	console.log(squareRotation);
