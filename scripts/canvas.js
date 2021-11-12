@@ -1,4 +1,5 @@
 var squareRotation = 0.0;
+var cameraTranslation = 0.0;
 
 window.addEventListener('load', function() {
 	/** @type {HTMLCanvasElement} */
@@ -23,6 +24,8 @@ window.addEventListener('load', function() {
 
 		void main() {
 			gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+			gl_Position /= gl_Position.w;
+			
 			vTextureCoord = aTextureCoord;
 		}`;
 
@@ -92,28 +95,6 @@ window.addEventListener('load', function() {
 	gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
-	/*
-	const colorBuffer = gl.createBuffer();
-
-	const faceColors = [
-		[1.0, 1.0, 1.0, 1.0],
-		[1.0, 0.0, 0.0, 1.0],
-		[0.0, 1.0, 0.0, 1.0],
-		[0.0, 0.0, 1.0, 1.0],
-		[1.0, 1.0, 0.0, 1.0],
-		[1.0, 0.0, 1.0, 1.0],
-	];
-
-	var colors = [];
-	for (var i = 0; i < faceColors.length; ++i) {
-		const c = faceColors[i];
-		colors = colors.concat(c, c, c, c);
-	}
-
-	gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
-	*/
-
 	const indexBuffer = gl.createBuffer();
 	const indices = [
 		0, 1, 2, 0, 2, 3,    // front
@@ -127,7 +108,7 @@ window.addEventListener('load', function() {
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
 	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
-	const texture = loadTexture(gl, "../images/favicon.png");
+	const texture = loadTexture(gl, "../images/credit.jpg");
 
 	const textureCoordBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
@@ -202,10 +183,10 @@ function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexB
 
 	const modelViewMatrix = mat4.create();
 
-	mat4.translate(modelViewMatrix, modelViewMatrix, [-0.0, 0.0, -6.0]);
+	mat4.translate(modelViewMatrix, modelViewMatrix, [0.0, 0.0, -cameraTranslation / 10]);
 
-	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation), [1, 1, 1]);
-
+	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(180.0), [0, 0, 1]);
+	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation / 2), [1, 1, 1]);
 	{
 		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 		gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 3, gl.FLOAT, false, 0, 0);
@@ -231,7 +212,11 @@ function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexB
 
 	gl.drawElements(gl.TRIANGLES, 36, gl.UNSIGNED_SHORT, 0);
 
+	if (squareRotation <= 70) {
+		cameraTranslation += deltaTime;
+	}
 	squareRotation += deltaTime;
+
 }
 
 function loadTexture(/** @type {WebGLRenderingContext} */ gl, url) {
