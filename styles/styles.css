@@ -252,7 +252,7 @@ header {
     height: 3px;
     background: var(--button-color);
     width: 0%;
-    transition: .6s;
+    transition: .5s;
     z-index: 10;
 }
 
