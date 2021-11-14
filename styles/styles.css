@@ -392,11 +392,18 @@ footer h1 {
 #canvas1 {
     border: 1px solid black;
     border-radius: 2%;
-    margin: 200px auto;
+    margin: 200px auto 0 auto;
 }
 
 .canvas {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.canvasNote {
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: var(--font-paragraph);
 }
