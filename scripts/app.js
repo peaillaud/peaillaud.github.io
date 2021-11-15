@@ -1,12 +1,7 @@
 // Initialisation des variables
 var divicon = document.getElementById('themeBtn');
 var boutonHaut = document.querySelector("#retournerHaut");
-
-/*
-var logo = document.getElementById('logo');
-var graphImage = document.querySelector("body > div.principal > article > div > div.container > img");
-var page = document.location.pathname.split('/').pop();
-*/
+var root = document.querySelector(':root');
 
 /**
  * Changement du thème du site à l'appel de la fonction, qui prend effet en cliquant sur l'icône de changement.
@@ -20,16 +15,19 @@ function changerTheme() {
         nomThemeOppose = "dark";
         document.body.classList.remove(nomThemeActif);
         document.body.classList.add(nomThemeOppose);
+        root.style.colorScheme = nomThemeOppose;
 
     } else if (document.body.classList.contains('dark')) {
         nomThemeActif = "dark";
         nomThemeOppose = "light";
         document.body.classList.remove(nomThemeActif);
         document.body.classList.add(nomThemeOppose);
+        root.style.colorScheme = nomThemeOppose;
     } else if (document.body.classList.length === 0) {
         nomThemeActif = "light";
         nomThemeOppose = "dark";
         document.body.classList.add(nomThemeOppose);
+        root.style.colorScheme = nomThemeOppose;
     }
 
     if (navigator.cookieEnabled === true) { // Pour enregistrer le choix de l'utilisateur
@@ -99,11 +97,14 @@ function definirTheme() {
     if (navigator.cookieEnabled === true) { // On regarde si l'utilisateur a activé les cookies
         if (document.body.classList.length === 0 && localStorage.getItem('theme') === null) {
             document.body.classList.add('light');
+            root.style.colorScheme = 'light';
         } else {
             document.body.classList.add(localStorage.getItem('theme'));
+            root.style.colorScheme = localStorage.getItem('theme');
         }
     } else { // Sinon, le body n'a pas de class et ne s'affichera pas correctement, car les variables ne seront pas chargées
         document.body.classList.add('light');
+        root.style.colorScheme = 'light';
     }
 
 }

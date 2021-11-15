@@ -123,6 +123,7 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+    position: relative;
 }
 
 .principal {
@@ -346,15 +347,36 @@ footer {
     box-sizing: border-box;
     padding: 35px 50px;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
     transition: .6s;
 }
 
 footer h1 {
     color: var(--font-title);
     margin: 0;
-    font-size: 3.5vh;
+    font-size: 4vh;
+}
+
+.elementFlex:nth-child(1) {
+    padding-right: 30vw;
+}
+
+.sources>li>a::before {
+    content: "";
+    position: absolute;
+    background-color: var(--font-paragraph);
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    transition: all .3s ease-in-out 0s;
+    transform: scaleX(0);
+    visibility: hidden
+}
+
+.sources>li>a:hover::before {
+    transform: scaleX(1);
+    visibility: visible;
 }
 
 #themeBtn-liste {
