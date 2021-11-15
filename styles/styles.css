@@ -341,7 +341,6 @@ footer {
     font-family: 'Space Mono', Arial, Helvetica, sans-serif;
     margin: 0 auto 15px auto;
     width: 90vw;
-    height: 200px;
     background-color: var(--bg-variant);
     border-radius: 25px;
     box-sizing: border-box;
@@ -368,8 +367,11 @@ footer h1 {
     height: 110px;
 }
 
-.sources {
-    padding-right: 8px;
+.footer-liste {
+    list-style-type: none;
+    padding: 0;
+    color: var(--font-paragraph);
+    margin: 20px 0 0 0;
     /* width: 25vw; */
 }
 
@@ -390,4 +392,8 @@ footer h1 {
     font-size: 20px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: var(--font-paragraph);
+}
+
+.maparea {
+    margin-top: 25px;
 }
