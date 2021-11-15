@@ -50,17 +50,6 @@
     }
 }
 
-@keyframes displayQuotes {
-    0% {
-        opacity: 0;
-        transform: translateX(100vh);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
 
 /* Propriétés HTML */
 
@@ -259,16 +248,11 @@ html::-webkit-scrollbar {
 }
 
 .quote {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: space-around;
     margin: auto 5em 7em 5em;
     font-family: 'Dongle';
-}
-
-.quoteactif {
-    display: flex;
-    animation: displayQuotes 1s ease-in-out;
 }
 
 .imgquote {
