@@ -1,4 +1,3 @@
-// Initialisation des variables
 var divicon = document.getElementById('themeBtn');
 var boutonHaut = document.querySelector("#retournerHaut");
 var root = document.querySelector(':root');
@@ -43,13 +42,13 @@ function changerTheme() {
 }
 
 /**
- * Détecte lorsque l'utilisateur descend à un certain niveau de la page, et modifie les propriétés du bouton associé
+ * Détecte lorsque l'utilisateur descend à un certain niveau de la page, et modifie les propriétés du bouton "Retourner en haut" associé
  */
 
 function descendre() {
     /*
      * NOTE: document.documentElement.scrollTop ne fonctionne que sur Chromium
-     *       tandis que document.body.scrollTop ne fonctionne que sur Firefox
+     *       tandis que document.body.scrollTop ne fonctionne que sur le reste
      */
     if (document.documentElement.scrollTop > 750 || document.body.scrollTop > 750) {
         boutonHaut.style.opacity = '1';
@@ -102,7 +101,7 @@ function definirTheme() {
             document.body.classList.add(localStorage.getItem('theme'));
             root.style.colorScheme = localStorage.getItem('theme');
         }
-    } else { // Sinon, le body n'a pas de class et ne s'affichera pas correctement, car les variables ne seront pas chargées
+    } else { // Sinon, le body n'a pas de classe et ne s'affichera pas correctement, car les variables ne seront pas chargées
         document.body.classList.add('light');
         root.style.colorScheme = 'light';
     }
