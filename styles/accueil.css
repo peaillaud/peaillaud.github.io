@@ -69,10 +69,6 @@ html::-webkit-scrollbar {
     /* Incompatible avec Firefox */
 }
 
-.indicateurScrollContainer {
-    display: none;
-}
-
 
 /* Design de la "page d'accueil" (non complète, avant qu'il scroll) de l'utilisateur */
 
