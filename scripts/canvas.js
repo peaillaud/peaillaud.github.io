@@ -8,11 +8,13 @@ window.addEventListener('load', function() {
 	/** @type {WebGLRenderingContext} */
 	const gl = canvas.getContext("webgl");
 
+	// si webgl n'est pas supporte
 	if (!gl) {
 		alert("webgl non supporté");
 		return;
 	}
 
+	// vertex shader
 	const vsSource = `
 		attribute vec4 aVertexPosition;
 		attribute vec2 aTextureCoord;
@@ -30,6 +32,7 @@ window.addEventListener('load', function() {
 		}`;
 
 
+	// fragment shader
 	const fsSource = `
 		varying highp vec2 vTextureCoord;
 
@@ -39,106 +42,119 @@ window.addEventListener('load', function() {
 		  gl_FragColor = texture2D(uSampler, vTextureCoord);
 		}`;
 
+	// shader program
 	const shaderProgram = createShaderProgram(gl, vsSource, fsSource);
 	const programInfo = {
 		program: shaderProgram,
 		attribLocations: {
-			vertexPositions: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
-			textureCoord: gl.getAttribLocation(shaderProgram, 'aTextureCoord'),
+			// vertex attribute
+			vertexPositions: gl.getAttribLocation(shaderProgram, 'aVertexPosition'), 
+			//
+			// texture attribute
+			textureCoord: gl.getAttribLocation(shaderProgram, 'aTextureCoord'), 
 		},
 		uniformLocations: {
+			// matrice de mvp
 			projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
 			modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
+
+			// le sampler de la texture
 			uSampler: gl.getUniformLocation(shaderProgram, 'uSampler'),
 		},
 	};
 
+	// le vertex buffer avec les donnes selon les coordonnees NDC de opengl
 	const vertexBuffer = gl.createBuffer();
 	const positions = [
-		// Front face
+		// face frontale
 		-1.0, -1.0, 1.0,
 		1.0, -1.0, 1.0,
 		1.0, 1.0, 1.0,
 		-1.0, 1.0, 1.0,
 
-		// Back face
+		// face arriere 
 		-1.0, -1.0, -1.0,
 		-1.0, 1.0, -1.0,
 		1.0, 1.0, -1.0,
 		1.0, -1.0, -1.0,
 
-		// Top face
+		// face haut
 		-1.0, 1.0, -1.0,
 		-1.0, 1.0, 1.0,
 		1.0, 1.0, 1.0,
 		1.0, 1.0, -1.0,
 
-		// Bottom face
+		// face bas
 		-1.0, -1.0, -1.0,
 		1.0, -1.0, -1.0,
 		1.0, -1.0, 1.0,
 		-1.0, -1.0, 1.0,
 
-		// Right face
+		// face droite
 		1.0, -1.0, -1.0,
 		1.0, 1.0, -1.0,
 		1.0, 1.0, 1.0,
 		1.0, -1.0, 1.0,
 
-		// Left face
+		// face gauche
 		-1.0, -1.0, -1.0,
 		-1.0, -1.0, 1.0,
 		-1.0, 1.0, 1.0,
 		-1.0, 1.0, -1.0,
 	];
 
+	// on copie les vertices dans le vertex buffer
 	gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 
+	// creation du index buffer permettant de reutiliser les valeurs du vertex buffer
 	const indexBuffer = gl.createBuffer();
 	const indices = [
-		0, 1, 2, 0, 2, 3,    // front
-		4, 5, 6, 4, 6, 7,    // back
-		8, 9, 10, 8, 10, 11,   // top
-		12, 13, 14, 12, 14, 15,   // bottom
-		16, 17, 18, 16, 18, 19,   // right
-		20, 21, 22, 20, 22, 23,   // left
+		0, 1, 2, 0, 2, 3,		  // avant
+		4, 5, 6, 4, 6, 7,		  // arriere
+		8, 9, 10, 8, 10, 11,	  // haut
+		12, 13, 14, 12, 14, 15,   // bas
+		16, 17, 18, 16, 18, 19,   // droite
+		20, 21, 22, 20, 22, 23,   // gauche
 	];
 
+	// on copies les indices dans le index buffer
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
 	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
+	// chargement de la texture (necessite d'avoir un serveur local)
 	const texture = loadTexture(gl, "../images/credit.jpg");
 
+	// creation du buffer contenant les coordonnees de la texture en fonction de celles du vertex buffer
 	const textureCoordBuffer = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
 
 	const textureCoordinates = [
-		// Front
+		// avant
 		0.0, 0.0,
 		1.0, 0.0,
 		1.0, 1.0,
 		0.0, 1.0,
 
-		// Back
+		// arriere
 		0.0, 0.0,
 		1.0, 0.0,
 		1.0, 1.0,
 		0.0, 1.0,
 
-		// Top
+		// haut
 		0.0, 0.0,
 		1.0, 0.0,
 		1.0, 1.0,
 		0.0, 1.0,
 
-		// Bottom
+		// bas
 		0.0, 0.0,
 		1.0, 0.0,
 		1.0, 1.0,
 		0.0, 1.0,
 
-		// Right
+		// droite
 		0.0, 0.0,
 		1.0, 0.0,
 		1.0, 1.0,
@@ -156,7 +172,7 @@ window.addEventListener('load', function() {
 	var then = 0;
 	function render(now) {
 		now *= 0.1;
-		const deltaTime = now - then;
+		const deltaTime = now - then; // calcul du temps ecoule depuis la derniere frame
 		then = now;
 
 		drawScene(gl, programInfo, vertexBuffer, indexBuffer, texture, textureCoordBuffer, deltaTime);
@@ -166,6 +182,7 @@ window.addEventListener('load', function() {
 })
 
 function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexBuffer, indexBuffer, texture, textureCoordBuffer, deltaTime) {
+	// on efface le color et depth buffer
 	gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.clearDepth(1.0);
 	gl.enable(gl.DEPTH_TEST);
@@ -173,18 +190,23 @@ function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexB
 
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
+	// parametres de la matrice de projection
 	const fov = 45 * Math.PI / 180;
 	const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
 	const zNear = 0.1;
 	const zFar = 100.0;
 
+	// creation de la matrice de projection
 	const projectionMatrix = mat4.create();
 	mat4.perspective(projectionMatrix, fov, aspect, zNear, zFar);
 
+	// creation de la matrice responsable des transformations locales
 	const modelViewMatrix = mat4.create();
 
+	// effet de transition
 	mat4.translate(modelViewMatrix, modelViewMatrix, [0.0, 0.0, -cameraTranslation / 10]);
 
+	// rotation
 	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(180.0), [0, 0, 1]);
 	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation / 2), [1, 1, 1]);
 	{
@@ -199,7 +221,6 @@ function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexB
 		gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
 	}
 
-	// gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
 	gl.activeTexture(gl.TEXTURE0);
 	gl.bindTexture(gl.TEXTURE_2D, texture);
 
@@ -252,7 +273,7 @@ function loadTexture(/** @type {WebGLRenderingContext} */ gl, url) {
 	return texture;
 }
 
-function loadShader(gl, type, source) {
+function loadShader(/** @type {WebGLRenderingContext} */ gl, type, source) {
 	const shader = gl.createShader(type);
 
 	gl.shaderSource(shader, source);
@@ -267,7 +288,7 @@ function loadShader(gl, type, source) {
 	}
 }
 
-function createShaderProgram(gl, vSource, fSource) {
+function createShaderProgram(/** @type {WebGLRenderingContext} */ gl, vSource, fSource) {
 	const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vSource);
 	const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fSource);
 
