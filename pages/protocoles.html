@@ -53,21 +53,18 @@
 
             <div class="article">
 
-                L'abondante diversité des méthodes de communications réseau amena un besoin d'uniformisation. Robert E. Kahn recruta Vinton G. Cerf de l'université Stanford dans le but de travailler ensemble sur ce problème. En 1973, ils avaient déjà réalisé une reformulation
-                profonde, dans laquelle les différences entre les protocoles s'estompaient par l'utilisation d'un protocole de communication : au lieu d'asseoir la fiabilité du réseau sur les connexions, comme avec l'ARPANET, les hôtes en étaient maintenant
-                responsables. Vinton G. Cerf attribua à Hubert Zimmermann et Louis Pouzin (développeurs du réseau Cyclades) un important travail de développement.
+                Alors que le nombre de méthodes de communications s'agrandissait, un besoin d'uniformisation de ces méthodes a été ressenti.
 
                 <div class="saut"></div>
 
-                Avec le rôle du réseau physique réduit à son strict minimum, il devint alors possible de fusionner à peu près tout type de réseau sans tenir compte de leurs caractéristiques et ainsi résoudre le problème que s'était posé Robert E. Kahn à ses débuts. La
-                DARPA accepta de financer le développement du logiciel prototype, et après plusieurs années de travail, la première démonstration quelque peu rustique de ce qu'était alors devenu le TCP/IP eut lieu en juillet 1977. Cette nouvelle méthode
-                se répandit au travers des réseaux, et le 1er janvier 1983 les protocoles TCP/IP devenaient officiellement le seul protocole sur l'ARPANET, remplaçant le précédent protocole NCP (RFC 801).
+                Vint l'idée de fusionner tous les réseaux, de tout type.<br/> Le premier janvier 1983, le protocole TCP/IP devient officiellement le seul protocole sur ARPANET, remplaçant le protocole NCP, obsolète.
+
 
                 <div class="saut"></div>
 
-                En effet, le TCP/IP est une suite de réseaux et de protocoles utilisés pour le transfert de données sur Internet.<br /> IP est la partie qui obtient l'adresse à laquelle les données sont envoyées. TCP est responsable de la livraison des
-                données une fois que cette adresse IP a été trouvée. Pour cela, le TCP/IP décompose chaque donnée en paquets, qui sont ensuite réassemblés à la destination. Ainsi, chaque paquet peut emprunter un itinéraire différent vers l'autre ordinateur,
-                si le premier itinéraire n'est pas disponible ou est endommagé.
+                En effet, le TCP/IP est une suite de réseaux et de protocoles utilisés pour le transfert de données sur Internet.<br /> L'IP (Internet Protocol) est la partie qui obtient l'adresse à laquelle les données doivent être envoyées. Le TCP (Transmission
+                Control Protocol) est responsable de la livraison des données une fois que cette adresse IP a été trouvée. Pour cela, le TCP/IP décompose chaque donnée en paquets, qui sont ensuite réassemblés à la destination. Ainsi, chaque paquet peut
+                emprunter un itinéraire différent vers l'autre ordinateur, si le premier itinéraire n'est pas disponible ou est endommagé.
 
                 <div class="saut"></div>
 
@@ -86,17 +83,16 @@
 
                 <ul>
                     <li>
-                        <b>Couche de liaison de données</b><br /> La couche Internet, également appelée couche réseau, contrôle le mouvement des paquets sur le réseau.
+                        <b>Couche de liaison de données</b><br /> La couche de liaison de données garantit qu'une connexion initiale a bien été établie.
                     </li>
                     <div class="saut"></div>
                     <li>
-                        <b>Couche Internet</b><br /> La couche transport fournit une connexion des données fiable entre deux appareils. Elle divise les données en paquets, accuse réception des paquets qu'elle a reçus de l'autre appareil et s'assure que
-                        ce dernier accuse réception des paquets qu'il reçoit.
+                        <b>Couche Internet</b><br /> La couche Internet, également appelée couche réseau, contrôle le mouvement des paquets sur le réseau. Elle fournit le paquet de données.
                     </li>
                     <div class="saut"></div>
                     <li>
-                        <b>Couche transport</b><br /> La couche transport fournit une connexion des données fiable entre deux appareils. Elle divise les données en paquets, accuse réception des paquets qu'elle a reçus de l'autre appareil et s'assure que
-                        ce dernier accuse réception des paquets qu'il reçoit.
+                        <b>Couche transport</b><br /> La couche transport fournit une connexion des données fiables entre deux appareils. Elle divise les données en paquets, accuse réception des paquets qu'elle a reçus de l'autre appareil et s'assure
+                        que ce dernier accuse réception des paquets qu'il reçoit.
                     </li>
                     <div class="saut"></div>
                     <li>
