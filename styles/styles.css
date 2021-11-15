@@ -345,7 +345,7 @@ footer {
     background-color: var(--bg-variant);
     border-radius: 25px;
     box-sizing: border-box;
-    padding: 20px 25px;
+    padding: 35px 50px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -371,22 +371,6 @@ footer h1 {
 .sources {
     padding-right: 8px;
     /* width: 25vw; */
-    overflow-y: scroll;
-}
-
-.sources::-webkit-scrollbar {
-    width: 10px;
-}
-
-.sources::-webkit-scrollbar-track {
-    background: var(--bg-variant);
-    border: 1px var(--bg-color) solid;
-    border-radius: 10px;
-}
-
-.sources::-webkit-scrollbar-thumb {
-    background: var(--bg-color);
-    border-radius: 10px;
 }
 
 #canvas1 {
