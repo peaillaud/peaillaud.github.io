@@ -28,7 +28,6 @@
     background-size: 400% 400%;
     margin: 0 auto;
     border-radius: 30px;
-    transition: .3s;
 }
 
 .frise ul {
@@ -115,11 +114,6 @@ time {
 
 
 /*Effets et animations*/
-
-.frise ul li::after {
-    transition: background 0.5s ease-in-out;
-}
-
 .frise ul li.friseActif::after {
     background: var(--font-title);
 }
