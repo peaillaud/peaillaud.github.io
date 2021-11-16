@@ -17,29 +17,43 @@ window.addEventListener('load', function() {
 	// vertex shader
 	const vsSource = `
 		attribute vec4 aVertexPosition;
+		attribute vec3 aNormalPosition;
 		attribute vec2 aTextureCoord;
 
+		uniform mat4 uNormalMatrix;
 		uniform mat4 uModelViewMatrix;
 		uniform mat4 uProjectionMatrix;
 
 		varying highp vec2 vTextureCoord;
+		varying highp vec3 vLighting;
 
 		void main() {
 			gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
 			gl_Position /= gl_Position.w;
 			
 			vTextureCoord = aTextureCoord;
+
+			highp vec3 ambientLight = vec3(0.3, 0.3, 0.3);
+			highp vec3 directionalLightColor = vec3(1, 1, 1);
+			highp vec3 directionalVector = normalize(vec3(0.85, 0.8, 0.75));
+
+			highp vec4 transformedNormal = uNormalMatrix * vec4(aNormalPosition, 1.0);
+
+			highp float directional = max(dot(transformedNormal.xyz, directionalVector), 0.0);
+			vLighting = ambientLight + (directionalLightColor * directional);
 		}`;
 
 
 	// fragment shader
 	const fsSource = `
 		varying highp vec2 vTextureCoord;
+		varying highp vec3 vLighting;
 
 		uniform sampler2D uSampler;
 
 		void main() {
-		  gl_FragColor = texture2D(uSampler, vTextureCoord);
+			highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
+			gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
 		}`;
 
 	// shader program
@@ -49,11 +63,17 @@ window.addEventListener('load', function() {
 		attribLocations: {
 			// vertex attribute
 			vertexPositions: gl.getAttribLocation(shaderProgram, 'aVertexPosition'), 
-			//
+
+			// normal attribute
+			normalPositions: gl.getAttribLocation(shaderProgram, 'aNormalPosition'),
+
 			// texture attribute
 			textureCoord: gl.getAttribLocation(shaderProgram, 'aTextureCoord'), 
 		},
 		uniformLocations: {
+			// matrice normal
+			normalMatrix: gl.getUniformLocation(shaderProgram, 'uNormalMatrix'),
+
 			// matrice de mvp
 			projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
 			modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
@@ -122,6 +142,49 @@ window.addEventListener('load', function() {
 	gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
 	gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
+
+	const normalBufffer = gl.createBuffer();
+	const normalVertices = [
+		// avant
+		0.0, 0.0, 1.0,
+		0.0, 0.0, 1.0,
+		0.0, 0.0, 1.0,
+		0.0, 0.0, 1.0,
+
+		// arrière
+		0.0, 0.0, -1.0,
+		0.0, 0.0, -1.0,
+		0.0, 0.0, -1.0,
+		0.0, 0.0, -1.0,
+
+		// haut
+		0.0, 1.0, 0.0,
+		0.0, 1.0, 0.0,
+		0.0, 1.0, 0.0,
+		0.0, 1.0, 0.0,
+
+		// bas
+		0.0, -1.0, 0.0,
+		0.0, -1.0, 0.0,
+		0.0, -1.0, 0.0,
+		0.0, -1.0, 0.0,
+
+		// droite
+		1.0, 0.0, 0.0,
+		1.0, 0.0, 0.0,
+		1.0, 0.0, 0.0,
+		1.0, 0.0, 0.0,
+
+		// gauche
+		-1.0, 0.0, 0.0,
+		-1.0, 0.0, 0.0,
+		-1.0, 0.0, 0.0,
+		-1.0, 0.0, 0.0,
+	];
+
+	gl.bindBuffer(gl.ARRAY_BUFFER, normalBufffer);
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(normalVertices), gl.STATIC_DRAW);
+
 	// chargement de la texture (necessite d'avoir un serveur local)
 	const texture = loadTexture(gl, "../images/credit.jpg");
 
@@ -175,13 +238,13 @@ window.addEventListener('load', function() {
 		const deltaTime = now - then; // calcul du temps ecoule depuis la derniere frame
 		then = now;
 
-		drawScene(gl, programInfo, vertexBuffer, indexBuffer, texture, textureCoordBuffer, deltaTime);
+		drawScene(gl, programInfo, vertexBuffer, indexBuffer, normalBufffer, texture, textureCoordBuffer, deltaTime);
 		requestAnimationFrame(render);
 	}
 	this.requestAnimationFrame(render);
 })
 
-function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexBuffer, indexBuffer, texture, textureCoordBuffer, deltaTime) {
+function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexBuffer, indexBuffer, normalBufffer, texture, textureCoordBuffer, deltaTime) {
 	// on efface le color et depth buffer
 	gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.clearDepth(1.0);
@@ -189,6 +252,31 @@ function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexB
 	gl.depthFunc(gl.LEQUAL);
 
 	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+
+	{
+		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+		gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 3, gl.FLOAT, false, 0, 0);
+		gl.enableVertexAttribArray(programInfo.attribLocations.vertexPositions);
+	}
+
+	{
+		gl.bindBuffer(gl.ARRAY_BUFFER, normalBufffer);
+		gl.vertexAttribPointer(programInfo.attribLocations.normalPositions, 3, gl.FLOAT, false, 0, 0);
+		gl.enableVertexAttribArray(programInfo.attribLocations.normalPositions);
+	}
+
+	{
+		gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
+		gl.vertexAttribPointer(programInfo.attribLocations.textureCoord, 2, gl.FLOAT, false, 0, 0);
+		gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
+	}
+
+	gl.activeTexture(gl.TEXTURE0);
+	gl.bindTexture(gl.TEXTURE_2D, texture);
+
+	gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
+
+	gl.useProgram(programInfo.program);
 
 	// parametres de la matrice de projection
 	const fov = 45 * Math.PI / 180;
@@ -209,27 +297,17 @@ function drawScene(/** @type {WebGLRenderingContext} */ gl, programInfo, vertexB
 	// rotation
 	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(180.0), [0, 0, 1]);
 	mat4.rotate(modelViewMatrix, modelViewMatrix, degreeToRad(squareRotation / 2), [1, 1, 1]);
-	{
-		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-		gl.vertexAttribPointer(programInfo.attribLocations.vertexPositions, 3, gl.FLOAT, false, 0, 0);
-		gl.enableVertexAttribArray(programInfo.attribLocations.vertexPositions);
-	}
 
-	{
-		gl.bindBuffer(gl.ARRAY_BUFFER, textureCoordBuffer);
-		gl.vertexAttribPointer(programInfo.attribLocations.textureCoord, 2, gl.FLOAT, false, 0, 0);
-		gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
-	}
-
-	gl.activeTexture(gl.TEXTURE0);
-	gl.bindTexture(gl.TEXTURE_2D, texture);
-
-	gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
-
-	gl.useProgram(programInfo.program);
 
 	gl.uniformMatrix4fv(programInfo.uniformLocations.projectionMatrix, false, projectionMatrix);
 	gl.uniformMatrix4fv(programInfo.uniformLocations.modelViewMatrix, false, modelViewMatrix);
+
+	// parametres matrices de la normal
+	const normalMatrix = mat4.create();
+	mat4.invert(normalMatrix, modelViewMatrix);
+	mat4.transpose(normalMatrix, normalMatrix);
+
+	gl.uniformMatrix4fv(programInfo.uniformLocations.normalMatrix, false, normalMatrix);
 
 	gl.drawElements(gl.TRIANGLES, 36, gl.UNSIGNED_SHORT, 0);
 
