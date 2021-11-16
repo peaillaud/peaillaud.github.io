@@ -278,27 +278,74 @@ img {
     background-color: var(--bg-variant);
 }
 
-.container {
-    position: relative;
-    margin: 2vh auto;
+.container{
+    display: flex;
+    justify-content: center;
+}
+  
+.content .content-overlay {
+    background-color : var(--container-color);
+    border-radius: 10px;
+    z-index: 10;
+    position: absolute;
+    height: 99%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 0.4s ease-in-out 0s;
+}
+  
+.content:hover .content-overlay{
+    opacity: 1;
+}
+  
+.content-details {
+    z-index: 20;
+    position: absolute;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out 0s;
 }
 
-.container:hover .overlay {
-    opacity: 0.85;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+.content:hover .content-details{
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+}
+
+.content-details h3{
+    color: var(--bg-color);
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+}
+
+.fadeIn-bottom{
+    top: 80%;
+}
+
+.content-details p{
+    color: var(--bg-color);
+    font-size: 0.8em;
 }
 
 .content {
+    position: relative;
     color: var(--font-title);
     padding: 10px;
     text-align: center;
     width: fit-content;
     font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     font-family: Roboto, sans-serif;
     line-height: 45px;
 }
@@ -418,4 +465,29 @@ footer h1 {
 
 .maparea {
     margin-top: 25px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px var(--font-title) solid;
+    margin: 5vh auto 5vh auto;
+}
+
+tr, td, th {
+    border: 1px var(--font-title) solid;
+    padding: 10px 35px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+th {
+    background-color: var(--bg-variant);
+    color: var(--font-title);
+    transition: .3s;
+}
+
+table>caption {
+    margin-top: 1.5vh;
+    caption-side: bottom;
 }

@@ -4,6 +4,7 @@
     --font-title: #444;
     --font-paragraph: #4e4e4e;
     --button-color: #D65A31;
+    --container-color: rgba(0,0,0,0.7);
 }
 
 .dark {
@@ -12,10 +13,13 @@
     --font-title: #eee;
     --font-paragraph: #cecece;
     --button-color: #D65A31;
+    --container-color: rgba(255,255,255,0.7);
+
 }
 
 .dark #logo,
 .dark .changer {
     filter: invert(1);
     transition: filter 0.3s;
+    z-index: 1;
 }
